@@ -1,0 +1,16 @@
+@use "/app/assets/scss/global/variables" as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    // background-color: $primaryColor;
+}
+
+body {
+    font-family: $primaryFont;
+}
