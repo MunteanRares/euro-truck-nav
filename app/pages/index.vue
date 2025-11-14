@@ -1,5 +1,7 @@
 <template>
-    <Map />
+    <TestMap />
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import TestMap from "~/components/testMap.vue";
+</script>

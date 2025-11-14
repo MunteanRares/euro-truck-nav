@@ -1,50 +1,44 @@
-import type { Map } from "leaflet";
-import * as Variables from "~~/shared/variables";
+import { ref, onMounted } from "vue";
+import maplibregl from "maplibre-gl";
+import * as pmtiles from "pmtiles";
 
 export const useMap = () => {
-    const map = ref<Map>();
+    const map = ref<maplibregl.Map>();
 
     const initMap = async (mapId: string) => {
-        const L = (await import("leaflet")).default;
-        await import("leaflet/dist/leaflet.css");
-        map.value = L.map(mapId, {
-            crs: L.CRS.Simple,
-            minZoom: 3,
-            maxZoom: Variables.TILESET_MAX_ZOOM,
-            zoomSnap: 0.5,
-            zoomDelta: 0.5,
-            zoomAnimation: false,
+        // Add PMTiles protocol
+        const protocol = new pmtiles.Protocol();
+        maplibregl.addProtocol("pmtiles", protocol.tile.bind(protocol));
+
+        // Initialize MapLibre map
+        map.value = new maplibregl.Map({
+            container: mapId,
+            style: {
+                version: 8,
+                sources: {
+                    tileset: {
+                        type: "vector",
+                        url: "pmtiles://ets2.pmtiles",
+                    },
+                },
+                layers: [
+                    {
+                        id: "tileset-layer",
+                        type: "line",
+                        source: "tileset",
+                        "source-layer": "ets2",
+                        paint: {
+                            "line-color": "#888888",
+                            "line-width": 1.5,
+                        },
+                    },
+                ],
+            },
+            center: [0, 0], // simple default center
+            zoom: 4,
+            minZoom: 4,
+            maxZoom: 13,
         });
-
-        const southWest = map.value.unproject(
-            [0, Variables.SOUTH_PIXELS_HEIGHT],
-            Variables.TILESET_MAX_ZOOM
-        );
-
-        const northEast = map.value.unproject(
-            [Variables.EAST_PIXELS_HEIGHT, 0],
-            Variables.TILESET_MAX_ZOOM
-        );
-
-        const center = L.latLng(
-            -Variables.TILE_SIZE / 2,
-            Variables.TILE_SIZE / 2
-        );
-
-        map.value.setView(center, 0);
-
-        const bounds = L.latLngBounds(southWest, northEast);
-
-        map.value.setMaxBounds(bounds.pad(0.2));
-
-        L.tileLayer("./Tiles/{z}/{x}/{y}.png", {
-            tileSize: Variables.TILE_SIZE,
-            noWrap: true,
-            tms: true,
-            maxNativeZoom: Variables.TILESET_MAX_ZOOM,
-            maxZoom: Variables.TILESET_MAX_ZOOM,
-            bounds: bounds,
-        }).addTo(map.value);
     };
 
     return { map, initMap };
