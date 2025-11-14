@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@microsoft/signalr": "^9.0.6",
+        "@turf/turf": "^7.2.0",
         "leaflet": "^1.9.4",
         "leaflet-rotatedmarker": "^0.2.0",
         "maplibre-gl": "^5.12.0",
