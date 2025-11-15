@@ -64,6 +64,30 @@ onMounted(async () => {
             data: "geojson/modified-water.geojson",
         });
 
+        // OUTLINE
+        map.addLayer(
+            {
+                id: "ets2-water-outline",
+                type: "line",
+                source: "ets2-water",
+                paint: {
+                    "line-color": "#1e3a5f", // Coastline color
+                    "line-width": [
+                        "interpolate",
+                        ["linear"],
+                        ["zoom"],
+                        5,
+                        7, // Zoomed out value
+                        10,
+                        4, // Zoomed in value
+                    ],
+                    "line-opacity": 0.8,
+                },
+            },
+            firstLayerId
+        );
+
+        // WATER
         map.addLayer(
             {
                 id: "ets2-water",
@@ -71,7 +95,7 @@ onMounted(async () => {
                 source: "ets2-water",
                 paint: {
                     "fill-color": "#24467b",
-                    "fill-opacity": 0.5,
+                    "fill-opacity": 0.6,
                 },
             },
             firstLayerId
@@ -187,16 +211,13 @@ onMounted(async () => {
             source: "ets2-villages",
             layout: {
                 "text-field": ["get", "name"],
-                "text-font": ["Quicksand"],
+                "text-font": ["Quicksand medium"],
                 "text-size": 13,
                 "text-anchor": "center",
                 "text-offset": [0, 0],
             },
             paint: {
                 "text-color": "#ffffff",
-                "text-halo-color": "#000000",
-                "text-halo-width": 1,
-                "text-halo-blur": 0.5,
             },
             minzoom: 7,
         });
@@ -210,14 +231,12 @@ onMounted(async () => {
             filter: ["==", ["get", "type"], "city"],
             layout: {
                 "text-field": ["get", "name"],
-                "text-font": ["Quicksand"],
+                "text-font": ["Quicksand medium"],
                 "text-size": 15,
                 "text-anchor": "center",
             },
             paint: {
                 "text-color": "#ffffff",
-                "text-halo-color": "#000000",
-                "text-halo-width": 2,
             },
             minzoom: 6,
         });
@@ -232,13 +251,11 @@ onMounted(async () => {
             layout: {
                 "text-field": ["get", "name"],
                 "text-size": 18,
-                "text-font": ["Quicksand"],
+                "text-font": ["Quicksand medium"],
                 "text-anchor": "center",
             },
             paint: {
                 "text-color": "#ffffff",
-                "text-halo-color": "#000000",
-                "text-halo-width": 2,
             },
             minzoom: 4,
         });
