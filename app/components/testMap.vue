@@ -54,11 +54,12 @@ onMounted(async () => {
         center: [10, 50],
         zoom: 4,
         minZoom: 5,
+        maxZoom: 11,
     });
 
     map.on("load", () => {
         // ADDING WATER BORDERS
-        const firstLayerId = map.getStyle().layers[1].id;
+        const waterLayer = map.getStyle().layers[1].id;
         map.addSource("ets2-water", {
             type: "geojson",
             data: "geojson/modified-water.geojson",
@@ -81,10 +82,10 @@ onMounted(async () => {
                         10,
                         4, // Zoomed in value
                     ],
-                    "line-opacity": 0.8,
+                    "line-opacity": 0.6,
                 },
             },
-            firstLayerId
+            waterLayer
         );
 
         // WATER
@@ -98,8 +99,9 @@ onMounted(async () => {
                     "fill-opacity": 0.6,
                 },
             },
-            firstLayerId
+            waterLayer
         );
+
         // ROAD CASING (dark outline for depth)
         map.addLayer({
             id: "ets2-road-casing",
@@ -140,15 +142,15 @@ onMounted(async () => {
                     ["linear"],
                     ["zoom"],
                     5,
-                    0.5,
+                    0.5, //
                     8,
-                    2,
-                    12,
-                    5,
-                    16,
-                    12,
+                    2, //
+                    10,
+                    7, //
+                    14,
+                    30, //
                 ],
-                "line-opacity": 0.95,
+                "line-opacity": 1,
             },
         });
 
