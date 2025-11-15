@@ -246,7 +246,7 @@ onMounted(async () => {
         // COUNTRY DELIMITATION
         map.addSource("country-borders", {
             type: "geojson",
-            data: "/geojson/countries.geojson",
+            data: "geojson/countries.geojson",
         });
 
         map.addLayer({
