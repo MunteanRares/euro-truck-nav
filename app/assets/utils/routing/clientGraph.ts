@@ -1,12 +1,13 @@
+import { getActiveMapFolder } from "../map/helpers";
 import { getMapFileUrl } from "../shared/fileManager";
 
 const { settings } = useSettings();
 
 export async function loadGraph() {
-    const game = settings.value.selectedGame!;
+    const folder = getActiveMapFolder(settings.value);
 
-    const graphUrl = await getMapFileUrl(game, "roadnetwork/graph.bin");
-    const geometryUrl = await getMapFileUrl(game, "roadnetwork/graph.bin");
+    const graphUrl = await getMapFileUrl(folder, "roadnetwork/graph.bin");
+    const geometryUrl = await getMapFileUrl(folder, "roadnetwork/geometry.bin");
 
     const [graphRes, geometryRes] = await Promise.all([
         fetch(graphUrl),

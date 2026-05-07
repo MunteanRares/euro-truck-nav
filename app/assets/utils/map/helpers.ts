@@ -27,3 +27,10 @@ export function deleteMapLibreData(map: maplibregl.Map, sourceName: string) {
         });
     }
 }
+
+export function getActiveMapFolder(settings: AppSettingsState): string {
+    const game = settings.selectedGame || "ets2";
+    const activeMod = settings.profiles[game].activeMod;
+
+    return activeMod === "none" ? game : activeMod;
+}

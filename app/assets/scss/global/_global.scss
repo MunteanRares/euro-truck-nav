@@ -84,4 +84,9 @@ input {
         background-color: $red-color;
         color: #222;
     }
+
+    &.default-color {
+        background-color: $primaryDarkerColor;
+        color: $white-font-text;
+    }
 }

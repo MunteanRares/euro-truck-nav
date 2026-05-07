@@ -11,6 +11,9 @@ apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
     implementation project(':capacitor-community-keep-awake')
     implementation project(':capacitor-community-safe-area')
+    implementation project(':capacitor-file-transfer')
+    implementation project(':capacitor-filesystem')
+    implementation project(':capgo-capacitor-zip')
 
 }
 

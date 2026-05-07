@@ -6,6 +6,7 @@ import {
 } from "~/assets/utils/shared/colors";
 import { BlobSource } from "~/assets/utils/shared/BlobSource";
 import { getMapFileUrl } from "~/assets/utils/shared/fileManager";
+import { getActiveMapFolder } from "~/assets/utils/map/helpers";
 
 export async function initializeMap(
     container: HTMLElement,
@@ -21,8 +22,11 @@ export async function initializeMap(
     maplibregl.addProtocol("pmtiles", protocol.tile);
 
     async function loadPmtiles(fileName: string, key: string) {
-        const game = settings.value.selectedGame!;
-        const url = await getMapFileUrl(game, `map-data/tiles/${fileName}.mp3`);
+        const folder = getActiveMapFolder(settings.value);
+        const url = await getMapFileUrl(
+            folder,
+            `map-data/tiles/${fileName}.mp3`,
+        );
 
         try {
             const response = await fetch(url);

@@ -105,7 +105,10 @@ async function uninstallMap() {
                         >
                     </button>
 
-                    <button @click="uninstallMap" class="btn nav-btn mod-btn">
+                    <button
+                        @click="uninstallMap"
+                        class="btn nav-btn mod-btn default-color"
+                    >
                         <Icon name="lucide:trash-2" size="20" />
                         <span>Uninstall Base Game</span>
                     </button>
