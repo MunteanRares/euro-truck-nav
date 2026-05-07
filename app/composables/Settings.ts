@@ -24,6 +24,7 @@ export interface GameProfile {
     lastDestination: [number, number] | null;
     hasTurnNavigation: boolean;
     fontFamily: string;
+    activeMod: string | "none";
 }
 
 export interface AppSettingsState {
@@ -52,6 +53,7 @@ const DEFAULT_PROFILE: GameProfile = {
     lastDestination: null,
     hasTurnNavigation: true,
     fontFamily: "Commissioner",
+    activeMod: "none",
 };
 
 const DEFAULT_SETTINGS: AppSettingsState = {

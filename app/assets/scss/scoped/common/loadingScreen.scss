@@ -25,20 +25,6 @@
     font-family: inherit;
 }
 
-.progress-bar-bg {
-    width: 200px;
-    height: 6px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    margin-bottom: 10px;
-    overflow: hidden;
-}
-
-.progress-bar-fill {
-    height: 100%;
-    transition: width 0.2s ease-out;
-}
-
 .loading-text {
     font-size: 1.8rem;
 }

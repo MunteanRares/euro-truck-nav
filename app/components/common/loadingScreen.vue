@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { darkenColor } from "~/assets/utils/shared/colors";
+import ProgressBar from "./progressBar.vue";
 
 defineProps<{ progress: number }>();
 const { activeSettings } = useSettings();
@@ -16,18 +17,7 @@ const { t } = useTranslations();
         >
             {{ progress }}%
         </div>
-        <div class="progress-bar-bg">
-            <div
-                class="progress-bar-fill"
-                :style="{
-                    width: progress + '%',
-                    backgroundColor: darkenColor(
-                        activeSettings.themeColor,
-                        0.2,
-                    ),
-                }"
-            ></div>
-        </div>
+        <ProgressBar :progress="progress" />
         <h2 class="loading-text">{{ t("common.loadingRouteData") }}</h2>
     </div>
 </template>

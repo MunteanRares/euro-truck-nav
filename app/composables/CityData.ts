@@ -3,6 +3,7 @@ import {
     convertEts2ToGeo,
 } from "~/assets/utils/map/converters";
 import { type WorkerCityArea } from "~/assets/utils/routing/algorithm";
+import { getMapFileUrl } from "~/assets/utils/shared/fileManager";
 import type { GameType } from "~/types";
 
 // --- Types ---
@@ -80,19 +81,34 @@ export function useCityData() {
         optimizedCityNodes.value = [];
 
         try {
+            const game = settings.value.selectedGame!;
+
+            const citiesUrl = await getMapFileUrl(game, "map-data/cities.json");
+            const companiesUrl = await getMapFileUrl(
+                game,
+                "map-data/companies.geojson",
+            );
+            const realCompanyModUrl = await getMapFileUrl(
+                game,
+                "map-data/RealCompaniesModVanillaMapping.json",
+            );
+
             if (settings.value.selectedGame === "ets2") {
+                const villagesUrl = await getMapFileUrl(
+                    game,
+                    "map-data/villages.geojson",
+                );
+
                 const [
                     citiesRes,
                     villagesRes,
                     companiesRes,
                     realCompanyModRes,
                 ] = await Promise.all([
-                    fetch("/data/ets2/map-data/cities.json"),
-                    fetch("/data/ets2/map-data/villages.geojson"),
-                    fetch("/data/ets2/map-data/companies.geojson"),
-                    fetch(
-                        "/data/ets2/map-data/RealCompaniesModVanillaMapping.json",
-                    ),
+                    fetch(citiesUrl),
+                    fetch(villagesUrl),
+                    fetch(companiesUrl),
+                    fetch(realCompanyModUrl),
                 ]);
 
                 if (citiesRes.ok) scsCitiesData.value = await citiesRes.json();
@@ -105,11 +121,9 @@ export function useCityData() {
             } else if (settings.value.selectedGame == "ats") {
                 const [citiesRes, companiesRes, realCompanyModRes] =
                     await Promise.all([
-                        fetch("/data/ats/map-data/cities.json"),
-                        fetch("/data/ats/map-data/companies.geojson"),
-                        fetch(
-                            "/data/ats/map-data/RealCompaniesModVanillaMapping.json",
-                        ),
+                        fetch(citiesUrl),
+                        fetch(companiesUrl),
+                        fetch(realCompanyModUrl),
                     ]);
 
                 if (citiesRes.ok) scsCitiesData.value = await citiesRes.json();

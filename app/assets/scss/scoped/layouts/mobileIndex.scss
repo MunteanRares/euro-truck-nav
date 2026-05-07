@@ -34,8 +34,26 @@
     display: flex;
     flex-direction: column;
     align-self: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 3rem;
 
     font-size: 1.6rem;
+}
+
+.top-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.bottom-download-button {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.progress-bar {
+    display: flex;
+    justify-self: center;
+    align-self: center;
 }
