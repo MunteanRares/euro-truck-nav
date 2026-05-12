@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { isBridgeRunning } from "~/assets/utils/telemetry/helpers";
-const props = defineProps<{ launchChooseGame: () => void }>();
 
 const { fetchIp, fetchPort, localIP, localPort } = useNetwork();
 const { updateGlobal } = useSettings();
@@ -9,7 +8,7 @@ const { t } = useTranslations();
 
 const isServerRunning = ref(false);
 const polling = ref<any>(null);
-const isWindowOpened = ref(false);
+const isRemoteGpsWindowOpened = ref(false);
 const etsActive = ref(false);
 const atsActive = ref(false);
 
@@ -24,9 +23,11 @@ const checkStatus = async () => {
     atsActive.value = statuses.ats;
 };
 
+const emit = defineEmits(["connected"]);
+
 const handleLocalLaunch = async () => {
     updateGlobal("savedIP", "127.0.0.1");
-    props.launchChooseGame();
+    emit("connected");
 };
 
 onMounted(async () => {
@@ -77,8 +78,8 @@ const openLink = async (url: string) => {
     (window as any).electronAPI.openExternal(url);
 };
 
-const toggleWindow = () => {
-    isWindowOpened.value = !isWindowOpened.value;
+const toggleRemoteGpsWindow = () => {
+    isRemoteGpsWindowOpened.value = !isRemoteGpsWindowOpened.value;
 };
 </script>
 
@@ -262,20 +263,8 @@ const toggleWindow = () => {
                 </div>
             </div>
 
-            <Transition name="panel-pop">
-                <div
-                    @click.self="toggleWindow"
-                    v-show="isWindowOpened"
-                    class="connect-modal-overlay"
-                >
-                    <div class="connect-window">
-                        <InputComputerIP @connected="launchChooseGame" />
-                    </div>
-                </div>
-            </Transition>
-
             <div class="connection-type">
-                <button @click.prevent="toggleWindow" class="btn">
+                <button @click.prevent="toggleRemoteGpsWindow" class="btn">
                     <span>{{ t("desktop.remoteGps") }}</span>
                     <Icon name="lucide:link-2" size="20" />
                 </button>
@@ -285,6 +274,18 @@ const toggleWindow = () => {
                     <Icon name="lucide:monitor" size="20" />
                 </button>
             </div>
+
+            <Transition name="panel-pop">
+                <div
+                    @click.self="toggleRemoteGpsWindow"
+                    v-show="isRemoteGpsWindowOpened"
+                    class="connect-modal-overlay"
+                >
+                    <div class="connect-window">
+                        <InputComputerIP @connected="emit('connected')" />
+                    </div>
+                </div>
+            </Transition>
         </div>
 
         <div class="troubleshoot">

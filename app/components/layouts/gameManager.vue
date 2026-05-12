@@ -7,6 +7,7 @@ import {
 
 const { selectedGame } = useGameSelection();
 const { updateProfile, activeSettings } = useSettings();
+const { isMobile } = usePlatform();
 const { t } = useTranslations();
 
 const emit = defineEmits(["connected"]);
@@ -17,6 +18,12 @@ const downloadingId = ref<string | null>(null);
 
 const isModPanelOpen = ref(false);
 const isBaseDownloaded = ref(false);
+
+onMounted(async () => {
+    if (selectedGame.value) {
+        isBaseDownloaded.value = await isMapDownloaded(selectedGame.value);
+    }
+});
 
 // const availableMods (computed game object based on settings.selectedGame)
 
@@ -53,8 +60,14 @@ function toggleModPanel() {
 }
 
 async function uninstallMap() {
-    await uninstallMapData(selectedGame.value!);
-    isBaseDownloaded.value = await isMapDownloaded(selectedGame.value!);
+    if (!selectedGame.value) return;
+
+    await uninstallMapData(selectedGame.value);
+
+    setTimeout(async () => {
+        const stillExists = await isMapDownloaded(selectedGame.value!);
+        isBaseDownloaded.value = stillExists;
+    }, 300);
 }
 </script>
 
@@ -66,9 +79,52 @@ async function uninstallMap() {
         </div>
 
         <div class="content">
-            <GameSelection v-model="selectedGame" :width="150" />
+            <div class="top-content">
+                <GameSelection v-model="selectedGame" :width="150" />
+                <div
+                    v-if="isBaseDownloaded && selectedGame"
+                    class="top-buttons"
+                >
+                    <button @click="toggleModPanel" class="btn nav-btn mod-btn">
+                        <Icon name="lucide:settings" size="20" />
+                        <span
+                            >Map Mods ({{
+                                activeSettings.activeMod === "none"
+                                    ? "None"
+                                    : activeSettings.activeMod
+                            }})</span
+                        >
+                    </button>
 
-            <template v-if="!isBaseDownloaded && selectedGame">
+                    <button
+                        @click="uninstallMap"
+                        class="btn nav-btn mod-btn default-color"
+                    >
+                        <Icon name="lucide:trash-2" size="20" />
+                        <span>Uninstall Base Map</span>
+                    </button>
+                </div>
+            </div>
+
+            <template v-if="isBaseDownloaded && selectedGame">
+                <InputComputerIP
+                    v-if="isMobile"
+                    @connected="emit('connected')"
+                    :style="{ width: '100%', marginTop: '10px' }"
+                    :require-game="true"
+                />
+
+                <button
+                    v-else
+                    @click.prevent="emit('connected')"
+                    class="btn nav-btn success-btn"
+                >
+                    <span>Start Navigation</span>
+                    <Icon name="lucide:map-pinned" size="20" />
+                </button>
+            </template>
+
+            <template v-else-if="!isBaseDownloaded && selectedGame">
                 <div class="bottom-download-button">
                     <button
                         @click.prevent="
@@ -92,35 +148,6 @@ async function uninstallMap() {
                 </div>
             </template>
 
-            <template v-else>
-                <div class="top-buttons">
-                    <button @click="toggleModPanel" class="btn nav-btn mod-btn">
-                        <Icon name="lucide:settings" size="20" />
-                        <span
-                            >Map Mods ({{
-                                activeSettings.activeMod === "none"
-                                    ? "None"
-                                    : activeSettings.activeMod
-                            }})</span
-                        >
-                    </button>
-
-                    <button
-                        @click="uninstallMap"
-                        class="btn nav-btn mod-btn default-color"
-                    >
-                        <Icon name="lucide:trash-2" size="20" />
-                        <span>Uninstall Base Game</span>
-                    </button>
-                </div>
-
-                <InputComputerIP
-                    @connected="emit('connected')"
-                    :style="{ width: '100%', marginTop: '10px' }"
-                    :require-game="true"
-                />
-            </template>
-
             <Transition name="panel-pop">
                 <PopupPanel
                     v-if="isModPanelOpen"
@@ -136,5 +163,5 @@ async function uninstallMap() {
 <style
     scoped
     lang="scss"
-    src="~/assets/scss/scoped/layouts/mobileIndex.scss"
+    src="~/assets/scss/scoped/layouts/gameManager.scss"
 ></style>

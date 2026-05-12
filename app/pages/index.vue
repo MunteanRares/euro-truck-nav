@@ -1,19 +1,32 @@
 <script lang="ts" setup>
 import { SafeArea, SystemBarsType } from "@capacitor-community/safe-area";
 
-const { isElectron, isMobile, isWeb } = usePlatform();
+const { isElectron, isMobile } = usePlatform();
 const { settings } = useSettings();
 
 const currentView = ref<string>("");
+
+onMounted(() => {
+    setTimeout(updateSystemBars, 500);
+    window.addEventListener("resize", updateSystemBars);
+
+    if (isElectron.value) {
+        currentView.value = "desktopHome";
+    } else {
+        currentView.value = "gameManager";
+    }
+});
+
+onUnmounted(() => {
+    window.removeEventListener("resize", updateSystemBars);
+});
 
 watch(currentView, async () => {
     await nextTick();
     updateSystemBars();
 
-    if (isElectron.value) {
-        if (currentView.value === "desktopHome") {
-            (window as any).electronAPI.setWindowSize(950, 700, false, false);
-        }
+    if (isElectron.value && currentView.value === "desktopHome") {
+        (window as any).electronAPI.setWindowSize(950, 700, false, false);
     }
 });
 
@@ -39,41 +52,13 @@ const updateSystemBars = async () => {
     }
 };
 
-onMounted(() => {
-    setTimeout(() => {
-        updateSystemBars();
-    }, 500);
-    window.addEventListener("resize", updateSystemBars);
-
-    if (isWeb.value) {
-        currentView.value = "chooseGame";
-    } else if (isElectron.value) {
-        currentView.value = "desktopHome";
-    } else if (isMobile.value) {
-        currentView.value = "mobileHome";
-    }
-});
-
-onUnmounted(() => {
-    window.removeEventListener("resize", updateSystemBars);
-});
-
-const launchMap = () => {
-    currentView.value = "map";
-};
-
-const launchChooseGame = () => {
-    currentView.value = "chooseGame";
-};
-
-const goToDesktopIndex = () => {
-    currentView.value = "desktopHome";
-};
+const launchGameManager = () => (currentView.value = "gameManager");
+const launchMap = () => (currentView.value = "map");
+const goToDesktopIndex = () => (currentView.value = "desktopHome");
 
 const goHome = () => {
     if (isElectron.value) currentView.value = "desktopHome";
-    if (isMobile.value) currentView.value = "mobileHome";
-    if (isWeb.value) currentView.value = "chooseGame";
+    else currentView.value = "gameManager";
 };
 </script>
 
@@ -82,27 +67,18 @@ const goHome = () => {
         <Transition name="page-fade">
             <DesktopIndex
                 v-show="currentView === 'desktopHome'"
-                :launch-choose-game="launchChooseGame"
+                :launch-choose-game="launchGameManager"
             />
         </Transition>
     </template>
 
     <Transition name="page-fade">
-        <ChooseGame
-            v-show="currentView === 'chooseGame'"
-            :launch-map="launchMap"
+        <GameManager
+            v-show="currentView === 'gameManager'"
             :go-to-desktop-index="goToDesktopIndex"
+            @connected="launchMap"
         />
     </Transition>
-
-    <template v-if="isMobile">
-        <Transition name="page-fade">
-            <MobileIndex
-                v-show="currentView === 'mobileHome'"
-                @connected="currentView = 'map'"
-            />
-        </Transition>
-    </template>
 
     <Transition name="page-fade">
         <LazyMap

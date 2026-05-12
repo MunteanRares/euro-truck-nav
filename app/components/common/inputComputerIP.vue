@@ -97,7 +97,11 @@ const handleConnect = async () => {
             </InfoBox>
         </div>
 
-        <button class="btn" @click="handleConnect" :disabled="!canConnect">
+        <button
+            class="btn nav-btn"
+            @click="handleConnect"
+            :disabled="!canConnect"
+        >
             <span>{{
                 isConnecting ? t("common.connecting") : t("common.connect")
             }}</span>

@@ -16,16 +16,16 @@ export async function downloadMapData(
     zipUrl: string,
     onProgress?: (percent: number) => void,
 ) {
-    if (isWeb) return true;
+    if (isWeb.value) return true;
 
-    if (isElectron) {
+    if (isElectron.value) {
         if (onProgress) {
             (window as any).electronAPI.onMapProgress((pct: number) => {
                 onProgress(pct);
             });
         }
 
-        return await (window as any).eelctronAPI.downloadMap(mapName, zipUrl);
+        return await (window as any).electronAPI.downloadMap(mapName, zipUrl);
     }
 
     const zipPath = `maps/${mapName}.zip`;
@@ -87,9 +87,9 @@ export async function downloadMapData(
  * @param mapName: Name of the map directory (e.g ets2, ats)
  */
 export async function isMapDownloaded(mapName: string): Promise<boolean> {
-    if (isWeb) return true;
+    if (isWeb.value) return true;
 
-    if (isElectron) {
+    if (isElectron.value) {
         return await (window as any).electronAPI.checkMap(mapName);
     }
 
@@ -109,9 +109,9 @@ export async function isMapDownloaded(mapName: string): Promise<boolean> {
  * Gets a list of all downloaded maps
  */
 export async function getDownloadedMaps(): Promise<string[]> {
-    if (isWeb) return [];
+    if (isWeb.value) return [];
 
-    if (isElectron) {
+    if (isElectron.value) {
         return await (window as any).electronAPI.getDownloadedMaps();
     }
 
@@ -134,9 +134,9 @@ export async function getDownloadedMaps(): Promise<string[]> {
  * @param mapName: Name of the map directory (e.g ets2, ats)
  */
 export async function uninstallMapData(mapName: string): Promise<boolean> {
-    if (isWeb) return false;
+    if (isWeb.value) return false;
 
-    if (isElectron) {
+    if (isElectron.value) {
         return await (window as any).electronAPI.uninstallMap(mapName);
     }
 
@@ -166,6 +166,11 @@ export async function getMapFileUrl(
     mapName: string,
     fileName: string,
 ): Promise<string> {
+    if (isElectron.value) {
+        const port = await (window as any).electronAPI.getLocalPort();
+        return `http://127.0.0.1:${port}/maps/${mapName}/${fileName}`;
+    }
+
     const localPath = `maps/${mapName}/${fileName}`;
 
     try {

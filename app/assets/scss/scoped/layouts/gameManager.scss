@@ -40,6 +40,12 @@
     font-size: 1.6rem;
 }
 
+.top-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
 .top-buttons {
     display: flex;
     flex-direction: column;

@@ -331,6 +331,26 @@ const killTelemetry = () => {
 const currentPort = { value: 0 };
 async function startWebServer() {
     const server = express();
+
+    server.use((req, res, next) => {
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+
+        res.setHeader(
+            "Access-Control-Allow-Headers",
+            "Origin, X-Requested-With, Content-Type, Accept, Range",
+        );
+        res.setHeader(
+            "Access-Control-Expose-Headers",
+            "Content-Length, Content-Range",
+        );
+
+        if (req.method === "OPTIONS") {
+            return res.sendStatus(200);
+        }
+        next();
+    });
+
     currentPort.value = await getAvailablePort(8628);
     const webDir = app.isPackaged
         ? path.join(process.resourcesPath, "app.asar", "app")
