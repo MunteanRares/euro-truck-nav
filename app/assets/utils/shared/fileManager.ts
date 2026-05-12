@@ -3,6 +3,8 @@ import { FileTransfer } from "@capacitor/file-transfer";
 import { CapacitorZip } from "@capgo/capacitor-zip";
 import { Capacitor } from "@capacitor/core";
 
+const { isElectron, isWeb } = usePlatform();
+
 /**
  * Downloads and extracts data into Directory.Data/maps
  * @param mapName: Name of the map directory (e.g ets2, ats)
@@ -14,6 +16,18 @@ export async function downloadMapData(
     zipUrl: string,
     onProgress?: (percent: number) => void,
 ) {
+    if (isWeb) return true;
+
+    if (isElectron) {
+        if (onProgress) {
+            (window as any).electronAPI.onMapProgress((pct: number) => {
+                onProgress(pct);
+            });
+        }
+
+        return await (window as any).eelctronAPI.downloadMap(mapName, zipUrl);
+    }
+
     const zipPath = `maps/${mapName}.zip`;
     const extractPath = `maps/${mapName}`;
 
@@ -73,6 +87,12 @@ export async function downloadMapData(
  * @param mapName: Name of the map directory (e.g ets2, ats)
  */
 export async function isMapDownloaded(mapName: string): Promise<boolean> {
+    if (isWeb) return true;
+
+    if (isElectron) {
+        return await (window as any).electronAPI.checkMap(mapName);
+    }
+
     const extractPath = `maps/${mapName}`;
     try {
         const stat = await Filesystem.stat({
@@ -89,6 +109,12 @@ export async function isMapDownloaded(mapName: string): Promise<boolean> {
  * Gets a list of all downloaded maps
  */
 export async function getDownloadedMaps(): Promise<string[]> {
+    if (isWeb) return [];
+
+    if (isElectron) {
+        return await (window as any).electronAPI.getDownloadedMaps();
+    }
+
     try {
         const result = await Filesystem.readdir({
             path: "maps",
@@ -108,6 +134,12 @@ export async function getDownloadedMaps(): Promise<string[]> {
  * @param mapName: Name of the map directory (e.g ets2, ats)
  */
 export async function uninstallMapData(mapName: string): Promise<boolean> {
+    if (isWeb) return false;
+
+    if (isElectron) {
+        return await (window as any).electronAPI.uninstallMap(mapName);
+    }
+
     const extractPath = `maps/${mapName}`;
 
     try {

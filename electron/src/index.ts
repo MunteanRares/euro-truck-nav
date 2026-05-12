@@ -22,8 +22,9 @@ import {
     existsSync,
     mkdirSync,
     readFileSync,
-    writeFileSync,
     createWriteStream,
+    rmSync,
+    readdirSync,
 } from "fs";
 import * as dgram from "dgram";
 import * as registry from "native-reg";
@@ -37,6 +38,8 @@ import {
     setDiscordRpcEnabled,
     updateDiscordRpc,
 } from "./discordRpc";
+import axios from "axios";
+import extract from "extract-zip";
 
 const appSettings = getSettings();
 
@@ -335,6 +338,10 @@ async function startWebServer() {
 
     server.use(express.static(webDir));
 
+    const mapsDir = path.join(app.getPath("userData"), "maps");
+    if (!existsSync(mapsDir)) mkdirSync(mapsDir, { recursive: true });
+    server.use("/maps", express.static(mapsDir));
+
     server.get("/*splat", (_req, res) => {
         res.sendFile(path.join(webDir, "index.html"));
     });
@@ -536,6 +543,91 @@ ipcMain.handle("get-local-ip", async () => {
             resolve("127.0.0.1");
         });
     });
+});
+
+ipcMain.handle("check-map", (_event, mapId: string) => {
+    const mapFolder = path.join(app.getPath("userData"), "maps", mapId);
+    return existsSync(mapFolder);
+});
+
+ipcMain.handle("uninstall-map", (_event, mapId: string) => {
+    const mapFolder = path.join(app.getPath("userData"), "maps", mapId);
+    if (existsSync(mapFolder)) {
+        rmSync(mapFolder, { recursive: true, force: true });
+    }
+
+    return true;
+});
+
+ipcMain.handle("download-map", async (event, { mapId, url }) => {
+    const mapsDir = path.join(app.getPath("userData"), "maps");
+    if (!existsSync(mapsDir)) mkdirSync(mapsDir, { recursive: true });
+
+    const zipPath = path.join(mapsDir, `${mapId}.zip`);
+    const extractPath = path.join(mapsDir, mapId);
+
+    try {
+        const writer = createWriteStream(zipPath);
+        const response = await axios({
+            url,
+            method: "GET",
+            responseType: "stream",
+        });
+
+        const totalLength = parseInt(
+            (response.headers["content-length"] || "0") as string,
+            10,
+        );
+        let downloadedBytes = 0;
+
+        response.data.on("data", (chunk: any) => {
+            downloadedBytes += chunk.length;
+            if (totalLength) {
+                const percent = Math.round(
+                    (downloadedBytes / totalLength) * 100,
+                );
+
+                event.sender.send("map-download-progress", percent);
+            }
+        });
+
+        await new Promise((resolve, reject) => {
+            response.data.pipe(writer);
+            let error: Error | null = null;
+
+            writer.on("error", (err) => {
+                error = err;
+                writer.close();
+                reject(err);
+            });
+
+            writer.on("close", () => {
+                if (!error) resolve(true);
+            });
+        });
+
+        await extract(zipPath, { dir: extractPath });
+        rmSync(zipPath, { force: true });
+
+        return true;
+    } catch (e) {
+        console.error("Map download failed: ", e);
+        return false;
+    }
+});
+
+ipcMain.handle("get-downloaded-maps", () => {
+    const mapsDir = path.join(app.getPath("userData"), "maps");
+
+    if (!existsSync(mapsDir)) return [];
+
+    try {
+        return readdirSync(mapsDir, { withFileTypes: true })
+            .filter((dirent) => dirent.isDirectory)
+            .map((dirent) => dirent.name);
+    } catch (e) {
+        return [];
+    }
 });
 
 ipcMain.on("open-external", (_event, url) => {
