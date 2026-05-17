@@ -2,8 +2,20 @@ import { Filesystem, Directory } from "@capacitor/filesystem";
 import { FileTransfer } from "@capacitor/file-transfer";
 import { CapacitorZip } from "@capgo/capacitor-zip";
 import { Capacitor } from "@capacitor/core";
+import axios from "axios";
 
 const { isElectron, isWeb } = usePlatform();
+
+async function getBaseUrl() {
+    if (isElectron.value && (window as any).electronAPI) {
+        const port = await (window as any).electronAPI.getLocalPort();
+        return `http://127.0.0.1:${port}`;
+    }
+    if (process.dev) {
+        return `http://localhost:8628`;
+    }
+    return "";
+}
 
 /**
  * Downloads and extracts data into Directory.Data/maps
@@ -16,8 +28,6 @@ export async function downloadMapData(
     zipUrl: string,
     onProgress?: (percent: number) => void,
 ) {
-    if (isWeb.value) return true;
-
     if (isElectron.value) {
         if (onProgress) {
             (window as any).electronAPI.onMapProgress((pct: number) => {
@@ -26,6 +36,27 @@ export async function downloadMapData(
         }
 
         return await (window as any).electronAPI.downloadMap(mapName, zipUrl);
+    }
+
+    if (isWeb.value || process.dev) {
+        try {
+            const base = await getBaseUrl();
+            const progressInterval = setInterval(async () => {
+                const res = await axios.get(`${base}/api/download-progress`);
+                if (onProgress) onProgress(res.data.progress);
+            }, 500);
+
+            await axios.post(`${base}/api/download-map`, {
+                mapId: mapName,
+                url: zipUrl,
+            });
+
+            clearInterval(progressInterval);
+            if (onProgress) onProgress(100);
+            return true;
+        } catch {
+            return false;
+        }
     }
 
     const zipPath = `maps/${mapName}.zip`;
@@ -87,10 +118,18 @@ export async function downloadMapData(
  * @param mapName: Name of the map directory (e.g ets2, ats)
  */
 export async function isMapDownloaded(mapName: string): Promise<boolean> {
-    if (isWeb.value) return true;
-
     if (isElectron.value) {
         return await (window as any).electronAPI.checkMap(mapName);
+    }
+
+    if (isWeb.value || process.dev) {
+        try {
+            const base = await getBaseUrl();
+            const res = await axios.get(`${base}/api/map-status/${mapName}`);
+            return res.data.downloaded;
+        } catch {
+            return false;
+        }
     }
 
     const extractPath = `maps/${mapName}`;
@@ -134,14 +173,23 @@ export async function getDownloadedMaps(): Promise<string[]> {
  * @param mapName: Name of the map directory (e.g ets2, ats)
  */
 export async function uninstallMapData(mapName: string): Promise<boolean> {
-    if (isWeb.value) return false;
-
     if (isElectron.value) {
         return await (window as any).electronAPI.uninstallMap(mapName);
     }
 
-    const extractPath = `maps/${mapName}`;
+    if (isWeb.value || process.dev) {
+        try {
+            const base = await getBaseUrl();
+            const res = await axios.post(`${base}/api/uninstall-map`, {
+                mapId: mapName,
+            });
+            return res.data.success;
+        } catch {
+            return false;
+        }
+    }
 
+    const extractPath = `maps/${mapName}`;
     try {
         await Filesystem.rmdir({
             path: extractPath,
@@ -171,8 +219,9 @@ export async function getMapFileUrl(
         return `http://127.0.0.1:${port}/maps/${mapName}/${fileName}`;
     }
 
-    if (isWeb.value) {
-        return `/maps/${mapName}/${fileName}`;
+    if (isWeb.value || process.dev) {
+        const base = await getBaseUrl();
+        return `${base}/maps/${mapName}/${fileName}`;
     }
 
     const localPath = `maps/${mapName}/${fileName}`;

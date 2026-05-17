@@ -328,27 +328,108 @@ const killTelemetry = () => {
     } catch (e) {}
 };
 
+async function checkMapExists(mapId: string) {
+    const mapFolder = path.join(app.getPath("userData"), "maps", mapId);
+    return existsSync(mapFolder);
+}
+
+async function removeMap(mapId: string) {
+    const mapFolder = path.join(app.getPath("userData"), "maps", mapId);
+    if (existsSync(mapFolder)) {
+        rmSync(mapFolder, { recursive: true, force: true });
+    }
+    return true;
+}
+
+let currentDownloadProgress = 0;
+
+async function handleMapDownload(mapId: string, url: string, event?: any) {
+    const mapsDir = path.join(app.getPath("userData"), "maps");
+    if (!existsSync(mapsDir)) mkdirSync(mapsDir, { recursive: true });
+
+    const zipPath = path.join(mapsDir, `${mapId}.zip`);
+    const extractPath = path.join(mapsDir, mapId);
+
+    try {
+        currentDownloadProgress = 0;
+        const response = await axios({
+            url,
+            method: "GET",
+            responseType: "stream",
+        });
+        const totalLength = parseInt(
+            String(response.headers["content-length"] || "0"),
+            10,
+        );
+        let downloadedBytes = 0;
+
+        const writer = createWriteStream(zipPath);
+        response.data.pipe(writer);
+
+        response.data.on("data", (chunk: any) => {
+            downloadedBytes += chunk.length;
+            if (totalLength) {
+                currentDownloadProgress = Math.round(
+                    (downloadedBytes / totalLength) * 100,
+                );
+                if (event)
+                    event.sender.send(
+                        "map-download-progress",
+                        currentDownloadProgress,
+                    );
+            }
+        });
+
+        await new Promise((resolve, reject) => {
+            writer.on("finish", resolve);
+            writer.on("error", reject);
+        });
+
+        await extract(zipPath, { dir: extractPath });
+        rmSync(zipPath, { force: true });
+        currentDownloadProgress = 0;
+        return true;
+    } catch (e) {
+        currentDownloadProgress = 0;
+        return false;
+    }
+}
+
 const currentPort = { value: 0 };
 async function startWebServer() {
     const server = express();
 
+    server.use(express.json());
     server.use((req, res, next) => {
         res.setHeader("Access-Control-Allow-Origin", "*");
         res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-
-        res.setHeader(
-            "Access-Control-Allow-Headers",
-            "Origin, X-Requested-With, Content-Type, Accept, Range",
-        );
+        res.setHeader("Access-Control-Allow-Headers", "*");
         res.setHeader(
             "Access-Control-Expose-Headers",
             "Content-Length, Content-Range",
         );
-
-        if (req.method === "OPTIONS") {
-            return res.sendStatus(200);
-        }
+        if (req.method === "OPTIONS") return res.sendStatus(200);
         next();
+    });
+
+    server.get("/api/map-status/:mapId", async (req, res) => {
+        res.json({ downloaded: await checkMapExists(req.params.mapId) });
+    });
+
+    server.get("/api/download-progress", (req, res) => {
+        res.json({ progress: currentDownloadProgress });
+    });
+
+    server.post("/api/download-map", async (req, res) => {
+        handleMapDownload(req.body.mapId, req.body.url);
+        const success = await handleMapDownload(req.body.mapId, req.body.url);
+
+        res.json({ success });
+    });
+
+    server.post("/api/uninstall-map", async (req, res) => {
+        const success = await removeMap(req.body.mapId);
+        res.json({ success });
     });
 
     currentPort.value = await getAvailablePort(8628);
@@ -566,74 +647,15 @@ ipcMain.handle("get-local-ip", async () => {
 });
 
 ipcMain.handle("check-map", (_event, mapId: string) => {
-    const mapFolder = path.join(app.getPath("userData"), "maps", mapId);
-    return existsSync(mapFolder);
+    return checkMapExists(mapId);
 });
 
 ipcMain.handle("uninstall-map", (_event, mapId: string) => {
-    const mapFolder = path.join(app.getPath("userData"), "maps", mapId);
-    if (existsSync(mapFolder)) {
-        rmSync(mapFolder, { recursive: true, force: true });
-    }
-
-    return true;
+    return removeMap(mapId);
 });
 
 ipcMain.handle("download-map", async (event, { mapId, url }) => {
-    const mapsDir = path.join(app.getPath("userData"), "maps");
-    if (!existsSync(mapsDir)) mkdirSync(mapsDir, { recursive: true });
-
-    const zipPath = path.join(mapsDir, `${mapId}.zip`);
-    const extractPath = path.join(mapsDir, mapId);
-
-    try {
-        const writer = createWriteStream(zipPath);
-        const response = await axios({
-            url,
-            method: "GET",
-            responseType: "stream",
-        });
-
-        const totalLength = parseInt(
-            (response.headers["content-length"] || "0") as string,
-            10,
-        );
-        let downloadedBytes = 0;
-
-        response.data.on("data", (chunk: any) => {
-            downloadedBytes += chunk.length;
-            if (totalLength) {
-                const percent = Math.round(
-                    (downloadedBytes / totalLength) * 100,
-                );
-
-                event.sender.send("map-download-progress", percent);
-            }
-        });
-
-        await new Promise((resolve, reject) => {
-            response.data.pipe(writer);
-            let error: Error | null = null;
-
-            writer.on("error", (err) => {
-                error = err;
-                writer.close();
-                reject(err);
-            });
-
-            writer.on("close", () => {
-                if (!error) resolve(true);
-            });
-        });
-
-        await extract(zipPath, { dir: extractPath });
-        rmSync(zipPath, { force: true });
-
-        return true;
-    } catch (e) {
-        console.error("Map download failed: ", e);
-        return false;
-    }
+    return await handleMapDownload(mapId, url, event);
 });
 
 ipcMain.handle("get-downloaded-maps", () => {
