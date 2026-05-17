@@ -171,8 +171,11 @@ export async function getMapFileUrl(
         return `http://127.0.0.1:${port}/maps/${mapName}/${fileName}`;
     }
 
-    const localPath = `maps/${mapName}/${fileName}`;
+    if (isWeb.value) {
+        return `/maps/${mapName}/${fileName}`;
+    }
 
+    const localPath = `maps/${mapName}/${fileName}`;
     try {
         await Filesystem.stat({
             path: localPath,
@@ -187,6 +190,6 @@ export async function getMapFileUrl(
         return Capacitor.convertFileSrc(uri.uri);
     } catch (e) {
         console.log("Failed to get downloaded map file: ", e);
-        return `/data/${mapName}/${fileName}`;
+        return `https://trucknavapp.com/data/${mapName}/${fileName}`;
     }
 }

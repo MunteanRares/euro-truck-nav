@@ -7,10 +7,10 @@ import {
 
 const { selectedGame } = useGameSelection();
 const { updateProfile, activeSettings } = useSettings();
-const { isMobile } = usePlatform();
+const { isMobile, isElectron } = usePlatform();
 const { t } = useTranslations();
 
-const emit = defineEmits(["connected"]);
+const emit = defineEmits(["connected", "goBack"]);
 
 const isDownloading = ref(false);
 const downloadProgress = ref(0);
@@ -74,6 +74,9 @@ async function uninstallMap() {
 <template>
     <section class="section-mobile-menu">
         <div class="title">
+            <div class="back-btn" @click="emit('goBack')">
+                <Icon name="lucide:arrow-left" size="24" />
+            </div>
             <Icon class="icon" name="lucide:cast" size="20" />
             <span>{{ t("mobile.pairWithComputer") }}</span>
         </div>

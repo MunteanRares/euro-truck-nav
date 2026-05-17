@@ -67,7 +67,7 @@ const goHome = () => {
         <Transition name="page-fade">
             <DesktopIndex
                 v-show="currentView === 'desktopHome'"
-                :launch-choose-game="launchGameManager"
+                @connected="launchGameManager"
             />
         </Transition>
     </template>
@@ -75,7 +75,7 @@ const goHome = () => {
     <Transition name="page-fade">
         <GameManager
             v-show="currentView === 'gameManager'"
-            :go-to-desktop-index="goToDesktopIndex"
+            @go-back="goToDesktopIndex"
             @connected="launchMap"
         />
     </Transition>

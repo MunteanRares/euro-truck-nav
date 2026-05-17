@@ -1,5 +1,6 @@
 .section-mobile-menu {
     height: calc(100dvh - env(safe-area-inset-top));
+    padding: 8px 16px;
 
     color: $white-font-text;
 
@@ -8,8 +9,6 @@
 }
 
 .title {
-    padding: 8px 16px;
-
     height: 4rem;
 
     display: flex;
@@ -28,8 +27,7 @@
 .content {
     flex-grow: 1;
     width: 80%;
-    padding: 4rem 0;
-    margin-top: 2rem;
+    padding: 3rem 0rem 4rem 0rem;
 
     display: flex;
     flex-direction: column;
@@ -38,6 +36,12 @@
     gap: 3rem;
 
     font-size: 1.6rem;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 .top-content {
