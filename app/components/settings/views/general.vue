@@ -56,7 +56,7 @@ onMounted(async () => {
 
 <template>
     <div>
-        <div class="option setting">
+        <div v-if="activeSettings.activeMod === 'none'" class="option setting">
             <div class="option-title">
                 <Icon name="lucide:map-plus" size="24" />
                 <p>{{ t("settings.ownedDlcs") }}</p>

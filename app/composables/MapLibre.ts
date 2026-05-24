@@ -64,7 +64,11 @@ export async function initializeMap(
             },
         },
 
-        sprite: `${baseUrl}/sprites/${settings.value.selectedGame}/sprites`,
+        sprite: `${baseUrl}/sprites/${
+            activeSettings.value.activeMod !== "none"
+                ? activeSettings.value.activeMod
+                : settings.value.selectedGame
+        }/sprites`,
         glyphs: `${baseUrl}/glyphs/{fontstack}/{range}.pbf`,
 
         layers: [
@@ -89,6 +93,18 @@ export async function initializeMap(
         ],
     };
 
+    const isProMods = activeSettings.value.activeMod === "promods-europe";
+
+    const proModsBounds: [number[], number[]] = [
+        [-40, -30], // [[west, south]
+        [75, 88], // [east, north]]
+    ];
+
+    const baseEtsBounds: [number[], number[]] = [
+        [-30, -23],
+        [23, 25],
+    ];
+
     const gameMap = {
         ets: {
             container,
@@ -101,10 +117,7 @@ export async function initializeMap(
             fadeDuration: 0,
             attributionControl: false,
             collectResourceTiming: false,
-            maxBounds: [
-                [-30, -23], // [[west, south]
-                [23, 25], // [east, north]]
-            ],
+            maxBounds: isProMods ? proModsBounds : baseEtsBounds,
         },
 
         ats: {

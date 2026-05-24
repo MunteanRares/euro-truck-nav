@@ -89,4 +89,9 @@ input {
         background-color: $primaryDarkerColor;
         color: $white-font-text;
     }
+
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
 }
