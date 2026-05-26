@@ -6,44 +6,93 @@
     "height": 64,
     "pixelRatio": 2
   },
-  "roadwork": {
+  "dotdot": {
+    "x": 1472,
+    "y": 1024,
+    "width": 20,
+    "height": 20,
+    "pixelRatio": 2
+  },
+  "dot": {
+    "x": 1492,
+    "y": 1024,
+    "width": 20,
+    "height": 20,
+    "pixelRatio": 2
+  },
+  "parking_ico": {
+    "x": 1472,
+    "y": 832,
+    "width": 32,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "weigh_station_ico": {
+    "x": 1504,
+    "y": 832,
+    "width": 32,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "gas_ico": {
+    "x": 1472,
+    "y": 864,
+    "width": 32,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "toll_ico": {
+    "x": 1504,
+    "y": 864,
+    "width": 32,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is70": {
     "x": 64,
     "y": 0,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is70": {
+  "pho_oil_gst": {
     "x": 0,
     "y": 64,
-    "width": 64,
-    "height": 64,
+    "width": 128,
+    "height": 32,
     "pixelRatio": 2
   },
-  "pho_oil_gst": {
-    "x": 128,
-    "y": 0,
+  "flv_food_str": {
+    "x": 0,
+    "y": 96,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "wld_frm_str": {
     "x": 128,
-    "y": 32,
+    "y": 0,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "flv_food_str": {
-    "x": 128,
-    "y": 64,
-    "width": 128,
+  "viewpoint": {
+    "x": 1472,
+    "y": 896,
+    "width": 32,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "photo_sight_captured": {
+    "x": 1504,
+    "y": 896,
+    "width": 32,
     "height": 32,
     "pixelRatio": 2
   },
   "is29": {
-    "x": 64,
-    "y": 64,
+    "x": 128,
+    "y": 32,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
@@ -55,6 +104,20 @@
     "height": 32,
     "pixelRatio": 2
   },
+  "roadwork": {
+    "x": 192,
+    "y": 32,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "service_ico": {
+    "x": 1472,
+    "y": 928,
+    "width": 32,
+    "height": 32,
+    "pixelRatio": 2
+  },
   "is680": {
     "x": 0,
     "y": 128,
@@ -62,102 +125,88 @@
     "height": 64,
     "pixelRatio": 2
   },
-  "is80": {
-    "x": 64,
-    "y": 128,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
   "evg_frm": {
-    "x": 128,
+    "x": 64,
     "y": 128,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "dri_oil_gst": {
-    "x": 128,
+  "is80": {
+    "x": 0,
+    "y": 192,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "tay_con_grg": {
+    "x": 64,
     "y": 160,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "equ_whs": {
-    "x": 0,
+  "garage_large_ico": {
+    "x": 1504,
+    "y": 928,
+    "width": 32,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "dri_oil_gst": {
+    "x": 64,
     "y": 192,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "garc_train": {
-    "x": 128,
-    "y": 192,
+  "equ_whs": {
+    "x": 64,
+    "y": 224,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "vor_oil_str1": {
-    "x": 0,
-    "y": 224,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "tay_con_grg": {
-    "x": 128,
-    "y": 224,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "flv_food_pln": {
     "x": 256,
     "y": 0,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is635": {
+  "is35": {
     "x": 256,
     "y": 32,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is35": {
+  "is635": {
     "x": 320,
     "y": 32,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "jns_rail_str": {
+  "garc_train": {
     "x": 256,
     "y": 96,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "jns_rail_wrk": {
+  "is670": {
     "x": 256,
     "y": 128,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "jns_rail_wrk": {
+    "x": 256,
+    "y": 192,
     "width": 128,
     "height": 32,
-    "pixelRatio": 2
-  },
-  "stopsign": {
-    "x": 256,
-    "y": 160,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "is670": {
-    "x": 320,
-    "y": 160,
-    "width": 64,
-    "height": 64,
     "pixelRatio": 2
   },
   "nls_rd_wrk": {
@@ -167,1176 +216,1253 @@
     "height": 32,
     "pixelRatio": 2
   },
-  "hs_mkt": {
+  "jns_rail_str": {
     "x": 0,
+    "y": 256,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "nmq_min_pln2": {
+    "x": 128,
     "y": 256,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "nmq_min_plnt": {
-    "x": 128,
-    "y": 256,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "eg_che_str": {
     "x": 256,
     "y": 256,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is49": {
+  "hs_mkt": {
     "x": 0,
     "y": 288,
-    "width": 64,
-    "height": 64,
+    "width": 128,
+    "height": 32,
     "pixelRatio": 2
   },
-  "42p_pck_pln": {
-    "x": 64,
+  "hf_wd_pln": {
+    "x": 128,
     "y": 288,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "nls_rd_svc": {
-    "x": 192,
+  "tay_con_sit2": {
+    "x": 256,
     "y": 288,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "wan_car_dlr": {
-    "x": 64,
-    "y": 320,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "18w_trl_svc": {
-    "x": 192,
+    "x": 0,
     "y": 320,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "triangle": {
-    "x": 384,
-    "y": 0,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "nmq_min_pln2": {
-    "x": 0,
-    "y": 352,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "nmq_min_str": {
+  "eg_che_str": {
     "x": 128,
-    "y": 352,
+    "y": 320,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "gld_frm_grg": {
     "x": 256,
+    "y": 320,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "nls_rd_svc": {
+    "x": 0,
     "y": 352,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
+  "42p_pck_pln": {
+    "x": 128,
+    "y": 352,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is49": {
+    "x": 320,
+    "y": 128,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
   "st_met_whs": {
-    "x": 0,
-    "y": 384,
+    "x": 256,
+    "y": 352,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "nmq_min_str": {
+    "x": 384,
+    "y": 0,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "gal_oil_gst": {
-    "x": 128,
-    "y": 384,
+    "x": 384,
+    "y": 32,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "hf_wd_pln": {
-    "x": 256,
-    "y": 384,
+  "wan_car_dlr": {
+    "x": 384,
+    "y": 64,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "tay_con_sit2": {
-    "x": 0,
-    "y": 416,
+  "dealer_ico": {
+    "x": 1472,
+    "y": 960,
+    "width": 32,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "flv_food_pln": {
+    "x": 384,
+    "y": 96,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "pt_trk_dlr": {
-    "x": 128,
-    "y": 416,
+  "frd_epw_sit": {
+    "x": 384,
+    "y": 128,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "is44": {
     "x": 384,
-    "y": 64,
+    "y": 160,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ok259a": {
+    "x": 448,
+    "y": 160,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "elm_whs": {
+    "x": 384,
+    "y": 224,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "pt_trk_dlr": {
+    "x": 384,
+    "y": 256,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "nmq_min_qry": {
+    "x": 384,
+    "y": 288,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ok3": {
+    "x": 384,
+    "y": 320,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "tay_con_sit": {
+    "x": 0,
+    "y": 384,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "pnp_wd_pln": {
+    "x": 128,
+    "y": 384,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "mwm_wst_whs": {
+    "x": 256,
+    "y": 384,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is30": {
+    "x": 448,
+    "y": 320,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ch_wd_saw": {
+    "x": 384,
+    "y": 384,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "recruitment_ico": {
+    "x": 1504,
+    "y": 960,
+    "width": 32,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ent_whs": {
+    "x": 0,
+    "y": 416,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "cal_car_exp": {
+    "x": 128,
+    "y": 416,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "cal_car_pln": {
     "x": 256,
     "y": 416,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "frd_epw_sit": {
-    "x": 448,
-    "y": 0,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ok259a": {
-    "x": 448,
-    "y": 32,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "is30": {
-    "x": 512,
-    "y": 32,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "nmq_min_qry": {
-    "x": 448,
-    "y": 96,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "mwm_wst_whs": {
-    "x": 448,
-    "y": 128,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ch_wd_saw": {
-    "x": 448,
-    "y": 160,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "cal_car_pln": {
-    "x": 448,
-    "y": 192,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "cal_car_exp": {
-    "x": 448,
-    "y": 224,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ent_whs": {
-    "x": 448,
-    "y": 256,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ok3": {
-    "x": 448,
-    "y": 288,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "gld_frm": {
-    "x": 448,
-    "y": 352,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
   "gp_live_auc": {
-    "x": 448,
-    "y": 384,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "vp_epw_sit": {
-    "x": 448,
+    "x": 384,
     "y": 416,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "myr_wd_mkt": {
+  "gld_frm": {
     "x": 0,
+    "y": 448,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "vp_epw_sit": {
+    "x": 128,
     "y": 448,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "pic_mkt": {
-    "x": 128,
-    "y": 448,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "drh_mkt": {
     "x": 256,
     "y": 448,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "ws_trk_dlr": {
+  "tch_el_pln": {
     "x": 384,
     "y": 448,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "pcp_car_whs": {
+  "myr_wd_mkt": {
     "x": 0,
     "y": 480,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "tch_el_pln": {
+  "ws_trk_dlr": {
     "x": 128,
+    "y": 480,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "pcp_car_whs": {
+    "x": 256,
+    "y": 480,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "drh_mkt": {
+    "x": 384,
     "y": 480,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "dyn_car_pln": {
-    "x": 256,
-    "y": 480,
+    "x": 512,
+    "y": 0,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "is220": {
     "x": 512,
-    "y": 288,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ch_wd_hrv": {
-    "x": 384,
-    "y": 480,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ccw_rd_grg": {
-    "x": 0,
-    "y": 512,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "vor_oil_ref": {
-    "x": 128,
-    "y": 512,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "vor_oil_sit": {
-    "x": 256,
-    "y": 512,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "fb_farm_pln": {
-    "x": 384,
-    "y": 512,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is10": {
-    "x": 384,
-    "y": 128,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "avs_met_sml": {
-    "x": 0,
-    "y": 544,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "port_bea": {
-    "x": 128,
-    "y": 544,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "gm_food_str": {
-    "x": 256,
-    "y": 544,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ai_car_whs": {
-    "x": 384,
-    "y": 544,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "fb_farm_mkt": {
-    "x": 576,
-    "y": 0,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "usb_food_pln": {
-    "x": 576,
     "y": 32,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "az_gls_pln": {
+    "x": 512,
+    "y": 96,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "xtm_con_svc": {
-    "x": 576,
-    "y": 64,
+    "x": 512,
+    "y": 128,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is20": {
-    "x": 576,
-    "y": 96,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ali_car_dlr": {
-    "x": 576,
+  "fb_farm_pln": {
+    "x": 512,
     "y": 160,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "pnp_wd_pln": {
-    "x": 576,
+  "ccw_rd_grg": {
+    "x": 512,
     "y": 192,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "wal_mkt": {
-    "x": 576,
+  "vor_oil_ref": {
+    "x": 512,
     "y": 224,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "ven_whs": {
+  "is10": {
     "x": 576,
+    "y": 32,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ai_car_whs": {
+    "x": 512,
     "y": 256,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "vp_epw_pln": {
-    "x": 576,
+  "avs_met_sml": {
+    "x": 512,
     "y": 288,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "sht_mkt": {
-    "x": 576,
+  "port_bea": {
+    "x": 512,
     "y": 320,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "apx_met_wrk": {
-    "x": 576,
+  "gm_food_str": {
+    "x": 512,
     "y": 352,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "apx_met_whs": {
-    "x": 576,
+  "fb_farm_mkt": {
+    "x": 512,
     "y": 384,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "mr_cot_pln": {
-    "x": 576,
+  "vor_oil_sit": {
+    "x": 512,
     "y": 416,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "st_met_wrk": {
+  "is20": {
+    "x": 512,
+    "y": 448,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "usb_food_pln": {
+    "x": 0,
+    "y": 512,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ven_whs": {
+    "x": 128,
+    "y": 512,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ali_car_dlr": {
+    "x": 256,
+    "y": 512,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "wal_mkt": {
+    "x": 384,
+    "y": 512,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "sht_mkt": {
+    "x": 512,
+    "y": 512,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "vp_epw_pln": {
+    "x": 0,
+    "y": 544,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "apx_met_wrk": {
+    "x": 128,
+    "y": 544,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "apx_met_whs": {
+    "x": 256,
+    "y": 544,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "mr_cot_pln": {
+    "x": 384,
+    "y": 544,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ch_wd_hrv": {
+    "x": 512,
+    "y": 544,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "trs_whs": {
+    "x": 0,
+    "y": 576,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is72": {
     "x": 576,
     "y": 448,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "gre_con_dlr": {
+    "x": 128,
+    "y": 576,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "stc_car_pln": {
+    "x": 256,
+    "y": 576,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "rp_port": {
+    "x": 384,
+    "y": 576,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "vor_oil_str": {
+    "x": 512,
+    "y": 576,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "sil_met_pln": {
+    "x": 0,
+    "y": 608,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is74": {
+    "x": 640,
+    "y": 0,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "wp_oil_gst": {
+    "x": 128,
+    "y": 608,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "is55": {
     "x": 640,
-    "y": 96,
+    "y": 64,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "apx_met_scr": {
-    "x": 576,
-    "y": 480,
+  "st_met_wrk": {
+    "x": 256,
+    "y": 608,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "bm_con_pln": {
-    "x": 576,
-    "y": 512,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "az_gls_pln": {
-    "x": 576,
-    "y": 544,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "vor_oil_str": {
-    "x": 0,
-    "y": 576,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ok7": {
+  "sh_shp_mar": {
     "x": 384,
+    "y": 608,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is64": {
+    "x": 640,
+    "y": 128,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is180": {
+    "x": 640,
     "y": 192,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "rp_port": {
-    "x": 128,
-    "y": 576,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "gp_farm": {
-    "x": 256,
-    "y": 576,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is40": {
-    "x": 384,
+  "is280": {
+    "x": 640,
     "y": 256,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "gm_food_plnt": {
+  "naf_oil_gst": {
+    "x": 512,
+    "y": 608,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "syn_che_plne": {
+    "x": 0,
+    "y": 640,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "il3": {
+    "x": 640,
+    "y": 320,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "nls_rd_grg": {
+    "x": 128,
+    "y": 640,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "mcc_frm_pln": {
+    "x": 256,
+    "y": 640,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "il146": {
+    "x": 640,
+    "y": 384,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "il127": {
+    "x": 640,
+    "y": 448,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "bm_con_pln": {
     "x": 384,
+    "y": 640,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is57": {
+    "x": 640,
+    "y": 512,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "apx_met_scr": {
+    "x": 512,
+    "y": 640,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ok7": {
+    "x": 640,
     "y": 576,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "gp_farm": {
+    "x": 0,
+    "y": 672,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is40": {
+    "x": 704,
+    "y": 0,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "gm_food_plnt": {
+    "x": 128,
+    "y": 672,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "il13": {
+    "x": 704,
+    "y": 64,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "sc_frm": {
+    "x": 256,
+    "y": 672,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "dc_car_dlr": {
+    "x": 384,
+    "y": 672,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "bn_farm": {
     "x": 512,
-    "y": 576,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "sc_frm_grg": {
-    "x": 0,
-    "y": 608,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "dc_car_dlr": {
-    "x": 128,
-    "y": 608,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "sc_frm": {
-    "x": 256,
-    "y": 608,
+    "y": 672,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "is76": {
-    "x": 0,
-    "y": 640,
+    "x": 704,
+    "y": 128,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
+  "sc_frm_grg": {
+    "x": 0,
+    "y": 704,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
   "gpw_rd_grg": {
-    "x": 384,
-    "y": 608,
+    "x": 128,
+    "y": 704,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "aml_rail_wrk": {
-    "x": 512,
-    "y": 608,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ed_mkt": {
-    "x": 64,
-    "y": 640,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "re_train": {
-    "x": 192,
-    "y": 640,
+    "x": 256,
+    "y": 704,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "bus40": {
     "x": 704,
-    "y": 0,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "tay_con_sit": {
-    "x": 320,
-    "y": 640,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "gm_chs_plnt": {
-    "x": 448,
-    "y": 640,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "pns_con_whs": {
-    "x": 576,
-    "y": 640,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "pns_con_sit1": {
-    "x": 64,
-    "y": 672,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "cha_el_mkt": {
-    "x": 192,
-    "y": 672,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "kw_trk_dlr": {
-    "x": 320,
-    "y": 672,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "chm_che_plnt": {
-    "x": 448,
-    "y": 672,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is180": {
-    "x": 704,
-    "y": 64,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "wy212": {
-    "x": 704,
-    "y": 128,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "bus80": {
-    "x": 704,
     "y": 192,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "aml_rail_str": {
-    "x": 576,
-    "y": 672,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "bit_rd_grg": {
-    "x": 0,
-    "y": 704,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "sb_whs": {
-    "x": 128,
-    "y": 704,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "tid_mkt": {
-    "x": 256,
-    "y": 704,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "apa_car_whs": {
+  "sh_shp_plnt": {
     "x": 384,
     "y": 704,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "lum_car_dlr": {
+  "ed_mkt": {
     "x": 512,
     "y": 704,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is25": {
+  "gm_chs_plnt": {
+    "x": 640,
+    "y": 704,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "re_train": {
+    "x": 0,
+    "y": 736,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "cha_el_mkt": {
+    "x": 128,
+    "y": 736,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "pns_con_sit1": {
+    "x": 256,
+    "y": 736,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "kw_trk_dlr": {
+    "x": 384,
+    "y": 736,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "pns_con_whs": {
+    "x": 512,
+    "y": 736,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "wy212": {
     "x": 704,
     "y": 256,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "wy222": {
+  "chm_che_plnt": {
+    "x": 640,
+    "y": 736,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "bus80": {
     "x": 704,
     "y": 320,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "gal_oil_str": {
-    "x": 640,
-    "y": 704,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "sg_whs": {
-    "x": 0,
-    "y": 736,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "avs_met_scr": {
-    "x": 128,
-    "y": 736,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "hau_oil_gst": {
-    "x": 256,
-    "y": 736,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "bn_live_auc": {
-    "x": 384,
-    "y": 736,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "wy789": {
-    "x": 704,
-    "y": 384,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "gal_oil_sit": {
-    "x": 512,
-    "y": 736,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "gal_oil_str1": {
-    "x": 640,
-    "y": 736,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "cm_min_qry": {
+  "aml_rail_str": {
     "x": 768,
     "y": 0,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "wy89": {
+  "bit_rd_grg": {
     "x": 768,
     "y": 32,
-    "width": 64,
-    "height": 64,
+    "width": 128,
+    "height": 32,
     "pixelRatio": 2
   },
-  "bit_rd_svc": {
+  "lum_car_dlr": {
+    "x": 768,
+    "y": 64,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "tid_mkt": {
     "x": 768,
     "y": 96,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "dg_wd_saw1": {
+  "apa_car_whs": {
     "x": 768,
     "y": 128,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is15": {
-    "x": 832,
-    "y": 32,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "hms_con_svc": {
+  "sb_whs": {
     "x": 768,
     "y": 160,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is84": {
+  "is25": {
     "x": 768,
     "y": 192,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "ut26": {
+  "wy222": {
     "x": 832,
     "y": 192,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "pns_con_grg": {
+  "bn_live_auc": {
     "x": 768,
     "y": 256,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "ut30": {
+  "sg_whs": {
     "x": 768,
     "y": 288,
-    "width": 64,
-    "height": 64,
+    "width": 128,
+    "height": 32,
     "pixelRatio": 2
   },
-  "ut172": {
-    "x": 832,
-    "y": 288,
-    "width": 64,
-    "height": 64,
+  "avs_met_scr": {
+    "x": 768,
+    "y": 320,
+    "width": 128,
+    "height": 32,
     "pixelRatio": 2
   },
-  "cm_min_plnt": {
+  "gal_oil_str": {
     "x": 768,
     "y": 352,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "cm_min_str": {
+  "hau_oil_gst": {
     "x": 768,
     "y": 384,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "pns_con_sit2": {
+  "wy789": {
     "x": 768,
     "y": 416,
-    "width": 128,
-    "height": 32,
+    "width": 64,
+    "height": 64,
     "pixelRatio": 2
   },
-  "chm_che_plns": {
-    "x": 768,
-    "y": 448,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "dg_wd_hrv": {
+  "gal_oil_sit": {
     "x": 768,
     "y": 480,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "sh_shp_mar": {
+  "gal_oil_str1": {
     "x": 768,
     "y": 512,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is90": {
+  "hms_con_svc": {
     "x": 768,
     "y": 544,
-    "width": 64,
-    "height": 64,
+    "width": 128,
+    "height": 32,
     "pixelRatio": 2
   },
-  "id55": {
+  "bit_rd_svc": {
+    "x": 768,
+    "y": 576,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is15": {
     "x": 832,
-    "y": 544,
+    "y": 416,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "pns_con_sit": {
+  "dg_wd_saw1": {
     "x": 768,
     "y": 608,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "gas_che_str": {
+  "ut172": {
     "x": 768,
     "y": 640,
-    "width": 128,
-    "height": 32,
+    "width": 64,
+    "height": 64,
     "pixelRatio": 2
   },
-  "mon_farm": {
-    "x": 768,
-    "y": 672,
-    "width": 128,
-    "height": 32,
+  "is84": {
+    "x": 832,
+    "y": 640,
+    "width": 64,
+    "height": 64,
     "pixelRatio": 2
   },
-  "oh_con_hom": {
+  "ut26": {
     "x": 768,
     "y": 704,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "wy89": {
+    "x": 832,
+    "y": 704,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "pns_con_grg": {
+    "x": 0,
+    "y": 768,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "ca_r86": {
+  "cm_min_str": {
+    "x": 128,
+    "y": 768,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ut30": {
+    "x": 704,
+    "y": 384,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "cm_min_plnt": {
+    "x": 256,
+    "y": 768,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "pns_con_sit2": {
+    "x": 384,
+    "y": 768,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "chm_che_plns": {
+    "x": 512,
+    "y": 768,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "pns_con_sit3": {
+    "x": 640,
+    "y": 768,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "az389": {
     "x": 704,
     "y": 448,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "az389": {
+  "dg_wd_hrv": {
+    "x": 768,
+    "y": 768,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is90": {
     "x": 704,
     "y": 512,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is82": {
+  "id55": {
     "x": 704,
     "y": 576,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "ca_r190": {
+  "pns_con_sit": {
+    "x": 0,
+    "y": 800,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "oh_con_hom": {
+    "x": 128,
+    "y": 800,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "gas_che_str": {
+    "x": 256,
+    "y": 800,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "agri_check": {
+    "x": 1472,
+    "y": 992,
+    "width": 32,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ca_r86": {
     "x": 704,
     "y": 640,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "ele_epw_svc": {
-    "x": 768,
-    "y": 736,
+  "is8": {
+    "x": 0,
+    "y": 832,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "cm_min_qry": {
+    "x": 384,
+    "y": 800,
     "width": 128,
     "height": 32,
+    "pixelRatio": 2
+  },
+  "ca_r190": {
+    "x": 64,
+    "y": 832,
+    "width": 64,
+    "height": 64,
     "pixelRatio": 2
   },
   "bit_rd_wrk": {
-    "x": 0,
-    "y": 768,
+    "x": 512,
+    "y": 800,
     "width": 128,
     "height": 32,
+    "pixelRatio": 2
+  },
+  "is82": {
+    "x": 128,
+    "y": 832,
+    "width": 64,
+    "height": 64,
     "pixelRatio": 2
   },
   "ca_r78": {
-    "x": 0,
-    "y": 800,
+    "x": 192,
+    "y": 832,
     "width": 64,
     "height": 64,
-    "pixelRatio": 2
-  },
-  "ele_epw_sit": {
-    "x": 128,
-    "y": 768,
-    "width": 128,
-    "height": 32,
     "pixelRatio": 2
   },
   "mon_food_pln": {
-    "x": 256,
-    "y": 768,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "chm_che_str": {
-    "x": 384,
-    "y": 768,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "cm_brx_pln": {
-    "x": 512,
-    "y": 768,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is8": {
-    "x": 64,
-    "y": 800,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "wp_oil_gst": {
     "x": 640,
-    "y": 768,
+    "y": 800,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ele_epw_sit": {
+    "x": 768,
+    "y": 800,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "ca_r58": {
-    "x": 128,
-    "y": 800,
+    "x": 256,
+    "y": 832,
     "width": 64,
     "height": 64,
+    "pixelRatio": 2
+  },
+  "chm_che_str": {
+    "x": 320,
+    "y": 832,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "cm_brx_pln": {
+    "x": 448,
+    "y": 832,
+    "width": 128,
+    "height": 32,
     "pixelRatio": 2
   },
   "is5": {
-    "x": 192,
-    "y": 800,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "lsf_crg_fwd": {
-    "x": 768,
-    "y": 768,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ca_r15": {
-    "x": 256,
-    "y": 800,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ca_r120": {
-    "x": 320,
-    "y": 800,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "gal_oil_svc": {
-    "x": 384,
-    "y": 800,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "gal_oil_well": {
-    "x": 512,
-    "y": 800,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ca_r14": {
     "x": 896,
     "y": 0,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is405": {
+  "ca_r15": {
     "x": 896,
     "y": 64,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "pns_con_sit3": {
-    "x": 640,
-    "y": 800,
+  "lsf_crg_fwd": {
+    "x": 576,
+    "y": 832,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "port_la": {
-    "x": 768,
-    "y": 800,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is710": {
+  "ca_r120": {
     "x": 896,
     "y": 128,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "ca_r299": {
+  "gal_oil_svc": {
+    "x": 704,
+    "y": 832,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ele_epw_svc": {
+    "x": 320,
+    "y": 864,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ca_r14": {
     "x": 896,
     "y": 192,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "naf_oil_gst": {
-    "x": 384,
-    "y": 832,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "aro_oil_gst": {
-    "x": 512,
-    "y": 832,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "aport_pcc": {
-    "x": 640,
-    "y": 832,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "cal_farm_alm": {
-    "x": 768,
-    "y": 832,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "blo_frm_str": {
-    "x": 0,
+  "gal_oil_well": {
+    "x": 448,
     "y": 864,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "ca_r1": {
+  "port_la": {
+    "x": 576,
+    "y": 864,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ca_r299": {
     "x": 896,
     "y": 256,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "wds_wst_whs": {
-    "x": 128,
-    "y": 864,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ai_car_pln": {
-    "x": 256,
-    "y": 864,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ca_r126": {
+  "is710": {
     "x": 896,
     "y": 320,
     "width": 64,
@@ -1350,193 +1476,214 @@
     "height": 64,
     "pixelRatio": 2
   },
-  "is110": {
-    "x": 896,
-    "y": 448,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "gal_oil_ref": {
-    "x": 384,
+  "aport_pcc": {
+    "x": 704,
     "y": 864,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "aport_ult": {
-    "x": 512,
-    "y": 864,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "aport_lax": {
-    "x": 640,
-    "y": 864,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "dw_air_pln": {
-    "x": 768,
-    "y": 864,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ca_r180": {
-    "x": 896,
-    "y": 512,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ca_r132": {
-    "x": 896,
-    "y": 576,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ca_r44": {
-    "x": 896,
-    "y": 640,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ws_trk_pln": {
+  "aro_oil_gst": {
     "x": 0,
     "y": 896,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "ca_r36": {
-    "x": 896,
-    "y": 704,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ca_r198": {
-    "x": 896,
-    "y": 768,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "hds_met_shp": {
+  "cal_farm_alm": {
     "x": 128,
     "y": 896,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "ca_r145": {
-    "x": 960,
-    "y": 0,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ca_r269": {
-    "x": 960,
-    "y": 64,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ftf_food_pln": {
+  "ai_car_pln": {
     "x": 256,
     "y": 896,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "ca_r152": {
-    "x": 960,
-    "y": 128,
+  "ca_r1": {
+    "x": 896,
+    "y": 448,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is580": {
-    "x": 960,
-    "y": 192,
+  "is405": {
+    "x": 896,
+    "y": 512,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is205": {
-    "x": 960,
-    "y": 256,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ca_r4": {
-    "x": 960,
-    "y": 320,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ca_r108": {
-    "x": 960,
-    "y": 384,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "vor_oil_gst": {
+  "blo_frm_str": {
     "x": 384,
     "y": 896,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "dg_wd_saw": {
+  "mon_farm": {
     "x": 512,
     "y": 896,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is880": {
-    "x": 960,
-    "y": 448,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "vm_car_pln": {
+  "gal_oil_ref": {
     "x": 640,
     "y": 896,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "ca_r17": {
-    "x": 960,
-    "y": 512,
+  "is110": {
+    "x": 896,
+    "y": 576,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "vm_car_exp": {
+  "ca_r126": {
+    "x": 896,
+    "y": 640,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "aport_ult": {
     "x": 768,
     "y": 896,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "oak_port": {
+  "ftf_food_pln": {
     "x": 0,
     "y": 928,
     "width": 128,
     "height": 32,
+    "pixelRatio": 2
+  },
+  "dw_air_pln": {
+    "x": 128,
+    "y": 928,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "wds_wst_whs": {
+    "x": 256,
+    "y": 928,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ca_r132": {
+    "x": 896,
+    "y": 704,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ca_r180": {
+    "x": 896,
+    "y": 768,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "aport_lax": {
+    "x": 384,
+    "y": 928,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ca_r44": {
+    "x": 896,
+    "y": 832,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ca_r36": {
+    "x": 960,
+    "y": 0,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "hds_met_shp": {
+    "x": 512,
+    "y": 928,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ca_r198": {
+    "x": 960,
+    "y": 64,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ws_trk_pln": {
+    "x": 640,
+    "y": 928,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ca_r145": {
+    "x": 960,
+    "y": 128,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ca_r269": {
+    "x": 960,
+    "y": 192,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ca_r152": {
+    "x": 960,
+    "y": 256,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is580": {
+    "x": 960,
+    "y": 320,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is205": {
+    "x": 960,
+    "y": 384,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ca_r108": {
+    "x": 960,
+    "y": 448,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ca_r4": {
+    "x": 960,
+    "y": 512,
+    "width": 64,
+    "height": 64,
     "pixelRatio": 2
   },
   "ca_r273": {
@@ -1546,336 +1693,357 @@
     "height": 64,
     "pixelRatio": 2
   },
-  "sf_port": {
-    "x": 128,
+  "vor_oil_gst": {
+    "x": 768,
     "y": 928,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ca_r17": {
+    "x": 960,
+    "y": 640,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is880": {
+    "x": 960,
+    "y": 704,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "dg_wd_saw": {
+    "x": 0,
+    "y": 960,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "vm_car_exp": {
+    "x": 128,
+    "y": 960,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "vm_car_pln": {
+    "x": 256,
+    "y": 960,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "oak_port": {
+    "x": 384,
+    "y": 960,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "sf_port": {
+    "x": 512,
+    "y": 960,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "ca_r37": {
     "x": 960,
-    "y": 640,
+    "y": 768,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "ca_r121": {
     "x": 960,
-    "y": 704,
+    "y": 832,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "is540": {
     "x": 960,
-    "y": 768,
+    "y": 896,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "tay_con_sit1": {
-    "x": 256,
-    "y": 928,
+    "x": 640,
+    "y": 960,
     "width": 128,
     "height": 32,
-    "pixelRatio": 2
-  },
-  "tay_con_whs": {
-    "x": 384,
-    "y": 928,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is530": {
-    "x": 960,
-    "y": 832,
-    "width": 64,
-    "height": 64,
     "pixelRatio": 2
   },
   "aport_lit": {
-    "x": 512,
-    "y": 928,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is555": {
-    "x": 0,
+    "x": 768,
     "y": 960,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "apx_met_sml": {
-    "x": 640,
-    "y": 928,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "gss_air_svc": {
-    "x": 768,
-    "y": 928,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "az98": {
-    "x": 64,
-    "y": 960,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "az87": {
-    "x": 128,
-    "y": 960,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "az99": {
-    "x": 192,
-    "y": 960,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "az260": {
-    "x": 256,
-    "y": 960,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "az64": {
-    "x": 320,
-    "y": 960,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "pio_car_dlr": {
     "x": 896,
-    "y": 928,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "grp_oil_gst": {
-    "x": 384,
     "y": 960,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "az90": {
+  "tay_con_whs": {
+    "x": 0,
+    "y": 992,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is555": {
     "x": 1024,
     "y": 0,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is19": {
+  "is530": {
     "x": 1024,
     "y": 64,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "az77": {
+  "apx_met_sml": {
+    "x": 128,
+    "y": 992,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "az98": {
     "x": 1024,
     "y": 128,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is17": {
+  "az77": {
     "x": 1024,
     "y": 192,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "wac_air_svc": {
-    "x": 512,
-    "y": 960,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "aport_phx": {
-    "x": 640,
-    "y": 960,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "az66": {
+  "az87": {
     "x": 1024,
     "y": 256,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "az96": {
+  "az260": {
     "x": 1024,
     "y": 320,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "az303": {
+  "az99": {
     "x": 1024,
     "y": 384,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "az95": {
+  "az64": {
     "x": 1024,
     "y": 448,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "az97": {
+  "pio_car_dlr": {
+    "x": 256,
+    "y": 992,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is19": {
     "x": 1024,
     "y": 512,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "sh_shp_plnt": {
-    "x": 768,
-    "y": 960,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "42p_print": {
-    "x": 896,
-    "y": 960,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "aport_den": {
+  "grp_oil_gst": {
     "x": 384,
     "y": 992,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "nmq_min_svc": {
-    "x": 512,
-    "y": 992,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ffe_frm_dlr": {
-    "x": 640,
-    "y": 992,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "syn_che_plne": {
-    "x": 768,
-    "y": 992,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is235": {
+  "az90": {
     "x": 1024,
     "y": 576,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "stc_car_pln": {
-    "x": 896,
-    "y": 992,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "frd_epw_svc": {
-    "x": 0,
-    "y": 1024,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "nls_rd_grg": {
-    "x": 128,
-    "y": 1024,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "mcc_frm_pln": {
-    "x": 256,
-    "y": 1024,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is380": {
+  "is17": {
     "x": 1024,
     "y": 640,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "tay_con_sit3": {
-    "x": 384,
-    "y": 1024,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "aport_cid": {
+  "wac_air_svc": {
     "x": 512,
-    "y": 1024,
+    "y": 992,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is74": {
+  "az97": {
     "x": 1024,
     "y": 704,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "id75": {
+  "az66": {
     "x": 1024,
     "y": 768,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is86": {
+  "aport_phx": {
+    "x": 640,
+    "y": 992,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "az96": {
     "x": 1024,
     "y": 832,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "id21": {
+  "42p_print": {
+    "x": 768,
+    "y": 992,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "az95": {
     "x": 1024,
     "y": 896,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "elv_el_pln": {
+  "az303": {
+    "x": 1024,
+    "y": 960,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "nmq_min_svc": {
+    "x": 896,
+    "y": 992,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ffe_frm_dlr": {
+    "x": 0,
+    "y": 1024,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is235": {
+    "x": 1088,
+    "y": 0,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "aport_den": {
+    "x": 128,
+    "y": 1024,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "aport_cid": {
+    "x": 256,
+    "y": 1024,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "frd_epw_svc": {
+    "x": 384,
+    "y": 1024,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is380": {
+    "x": 1088,
+    "y": 64,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is86": {
+    "x": 1088,
+    "y": 128,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "tay_con_sit3": {
+    "x": 512,
+    "y": 1024,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "nv225": {
+    "x": 1088,
+    "y": 192,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "id75": {
+    "x": 1088,
+    "y": 256,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "id51": {
+    "x": 1088,
+    "y": 320,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "id21": {
+    "x": 1088,
+    "y": 384,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "aqv_shp_mar": {
     "x": 640,
     "y": 1024,
     "width": 128,
@@ -1883,63 +2051,98 @@
     "pixelRatio": 2
   },
   "id13": {
-    "x": 1024,
-    "y": 960,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "nv225": {
     "x": 1088,
-    "y": 0,
+    "y": 448,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is470": {
-    "x": 1088,
-    "y": 64,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "sil_met_pln": {
+  "ant_con_pln": {
     "x": 768,
     "y": 1024,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "id51": {
+  "is39": {
     "x": 1088,
-    "y": 128,
+    "y": 512,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is335": {
+  "il1": {
     "x": 1088,
-    "y": 192,
+    "y": 576,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "nmq_min_qrys": {
+  "il33": {
+    "x": 1088,
+    "y": 640,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "asu_car_exp": {
     "x": 896,
     "y": 1024,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "pet_oil_well": {
+  "elv_el_pln": {
     "x": 0,
     "y": 1056,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "dpw_oil_svc": {
+  "asu_car_pln": {
     "x": 128,
+    "y": 1056,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is94": {
+    "x": 1088,
+    "y": 704,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "und_str": {
+    "x": 256,
+    "y": 1056,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "il43": {
+    "x": 1088,
+    "y": 768,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is470": {
+    "x": 1088,
+    "y": 832,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is335": {
+    "x": 1088,
+    "y": 896,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "aport_ict": {
+    "x": 384,
     "y": 1056,
     "width": 128,
     "height": 32,
@@ -1947,173 +2150,96 @@
   },
   "is135": {
     "x": 1088,
-    "y": 256,
+    "y": 960,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "aport_ict": {
-    "x": 256,
-    "y": 1056,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is210": {
-    "x": 1088,
-    "y": 320,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "fus_oil_gst": {
-    "x": 384,
-    "y": 1056,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "syn_che_str": {
+  "aport_ord": {
     "x": 512,
     "y": 1056,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is12": {
-    "x": 1088,
-    "y": 384,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "trs_whs": {
+  "nmq_min_qrys": {
     "x": 640,
     "y": 1056,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "port_no": {
+  "dpw_oil_svc": {
     "x": 768,
     "y": 1056,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "ath_trk_dlr": {
+  "pet_oil_well": {
     "x": 896,
     "y": 1056,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is72": {
-    "x": 1088,
-    "y": 448,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "swb_sug_plnt": {
+  "fus_oil_gst": {
     "x": 1024,
     "y": 1056,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "mt16": {
-    "x": 1088,
-    "y": 512,
-    "width": 64,
-    "height": 64,
+  "port_overlay": {
+    "x": 1504,
+    "y": 992,
+    "width": 32,
+    "height": 32,
     "pixelRatio": 2
   },
-  "mt200s": {
-    "x": 1088,
-    "y": 576,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "is94": {
-    "x": 1088,
-    "y": 640,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "mt59": {
-    "x": 1088,
-    "y": 704,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "mt24": {
-    "x": 1088,
-    "y": 768,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "mt200": {
-    "x": 1088,
-    "y": 832,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "wy59": {
-    "x": 1088,
-    "y": 896,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "mt19": {
-    "x": 1088,
-    "y": 960,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "mt3": {
+  "is210": {
     "x": 0,
     "y": 1088,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "nmq_min_pln1": {
+  "syn_che_str": {
     "x": 64,
     "y": 1088,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "aport_gtf": {
-    "x": 192,
-    "y": 1088,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "mt135": {
+  "is12": {
     "x": 1152,
     "y": 0,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "out_car_pln": {
+  "port_no": {
+    "x": 192,
+    "y": 1088,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ath_trk_dlr": {
     "x": 320,
     "y": 1088,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "is115": {
+  "swb_sug_plnt": {
+    "x": 448,
+    "y": 1088,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "mt200s": {
     "x": 1152,
     "y": 64,
     "width": 64,
@@ -2121,7 +2247,91 @@
     "pixelRatio": 2
   },
   "gul_oil_str": {
-    "x": 448,
+    "x": 576,
+    "y": 1088,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "mt59": {
+    "x": 1152,
+    "y": 128,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "mt16": {
+    "x": 1152,
+    "y": 192,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "mt200": {
+    "x": 1152,
+    "y": 256,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "wy59": {
+    "x": 1152,
+    "y": 320,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "mt19": {
+    "x": 1152,
+    "y": 384,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "mt24": {
+    "x": 1152,
+    "y": 448,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "mt3": {
+    "x": 1152,
+    "y": 512,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "nmq_min_pln1": {
+    "x": 704,
+    "y": 1088,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "aport_gtf": {
+    "x": 832,
+    "y": 1088,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is115": {
+    "x": 1152,
+    "y": 576,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "mt135": {
+    "x": 1152,
+    "y": 640,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "out_car_pln": {
+    "x": 960,
     "y": 1088,
     "width": 128,
     "height": 32,
@@ -2129,202 +2339,167 @@
   },
   "nv319": {
     "x": 1152,
-    "y": 128,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "is515": {
-    "x": 1152,
-    "y": 192,
+    "y": 704,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "nv375": {
     "x": 1152,
-    "y": 256,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "nv376": {
-    "x": 1152,
-    "y": 320,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "nv140": {
-    "x": 1152,
-    "y": 384,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "aport_abq": {
-    "x": 576,
-    "y": 1088,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "nv305": {
-    "x": 1152,
-    "y": 448,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "yel_bus_pln": {
-    "x": 704,
-    "y": 1088,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "aport_tul": {
-    "x": 832,
-    "y": 1088,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ok375": {
-    "x": 1152,
-    "y": 512,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "is244": {
-    "x": 1152,
-    "y": 576,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ca_r139": {
-    "x": 1152,
-    "y": 640,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "is45": {
-    "x": 1152,
-    "y": 704,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "is69": {
-    "x": 1152,
     "y": 768,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "aport_iah": {
-    "x": 960,
-    "y": 1088,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "port_gal": {
-    "x": 64,
-    "y": 1120,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "port_hou": {
-    "x": 192,
-    "y": 1120,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "spc_whs": {
-    "x": 320,
-    "y": 1120,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is35e": {
+  "is515": {
     "x": 1152,
     "y": 832,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "ter_met_shp": {
-    "x": 448,
-    "y": 1120,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "aport_dfw": {
-    "x": 576,
-    "y": 1120,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is35w": {
+  "nv376": {
     "x": 1152,
     "y": 896,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "asu_car_pln": {
-    "x": 704,
-    "y": 1120,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is37": {
+  "nv140": {
     "x": 1152,
     "y": 960,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "port_bro": {
-    "x": 832,
-    "y": 1120,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "port_cor": {
-    "x": 960,
-    "y": 1120,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "is14": {
+  "nv305": {
     "x": 1152,
     "y": 1024,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "is69e": {
+  "aport_abq": {
+    "x": 64,
+    "y": 1120,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "aport_tul": {
+    "x": 192,
+    "y": 1120,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "yel_bus_pln": {
+    "x": 320,
+    "y": 1120,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ok375": {
     "x": 1152,
     "y": 1088,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "plu_el_mkt": {
+  "is244": {
     "x": 0,
+    "y": 1152,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ca_r139": {
+    "x": 64,
+    "y": 1152,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is45": {
+    "x": 128,
+    "y": 1152,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is69": {
+    "x": 192,
+    "y": 1152,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "aport_iah": {
+    "x": 448,
+    "y": 1120,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "spc_whs": {
+    "x": 576,
+    "y": 1120,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is35e": {
+    "x": 256,
+    "y": 1152,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ter_met_shp": {
+    "x": 704,
+    "y": 1120,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "port_hou": {
+    "x": 832,
+    "y": 1120,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "port_gal": {
+    "x": 960,
+    "y": 1120,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "is37": {
+    "x": 320,
+    "y": 1152,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is14": {
+    "x": 384,
+    "y": 1152,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "port_bro": {
+    "x": 448,
+    "y": 1152,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "port_cor": {
+    "x": 576,
     "y": 1152,
     "width": 128,
     "height": 32,
@@ -2337,8 +2512,22 @@
     "height": 64,
     "pixelRatio": 2
   },
-  "asu_car_exp": {
-    "x": 128,
+  "is35w": {
+    "x": 1216,
+    "y": 64,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "is69e": {
+    "x": 1216,
+    "y": 128,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "plu_el_mkt": {
+    "x": 704,
     "y": 1152,
     "width": 128,
     "height": 32,
@@ -2346,1241 +2535,1157 @@
   },
   "is69w": {
     "x": 1216,
-    "y": 64,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "aport_elp": {
-    "x": 256,
-    "y": 1152,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "cm_min_qryp": {
-    "x": 384,
-    "y": 1152,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ut55": {
-    "x": 1216,
-    "y": 128,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ut10": {
-    "x": 1216,
     "y": 192,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "dmc_car_dlr": {
-    "x": 512,
-    "y": 1152,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "ut52": {
-    "x": 1216,
-    "y": 256,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ut151": {
-    "x": 1216,
-    "y": 320,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "is27": {
     "x": 1216,
+    "y": 256,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ut55": {
+    "x": 1216,
+    "y": 320,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "aport_elp": {
+    "x": 832,
+    "y": 1152,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "cm_min_qryp": {
+    "x": 960,
+    "y": 1152,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "dmc_car_dlr": {
+    "x": 1088,
+    "y": 1152,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ut10": {
+    "x": 1216,
     "y": 384,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "cm_min_svc": {
+    "x": 448,
+    "y": 1184,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
+  "ut151": {
+    "x": 1216,
+    "y": 448,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "ut202": {
     "x": 1216,
-    "y": 448,
+    "y": 512,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "ut201": {
     "x": 1216,
-    "y": 512,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ut130": {
-    "x": 1216,
     "y": 576,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ut59": {
-    "x": 1216,
-    "y": 640,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ut56": {
-    "x": 1216,
-    "y": 704,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ut34": {
-    "x": 1216,
-    "y": 768,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "ut9": {
     "x": 1216,
+    "y": 640,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ut59": {
+    "x": 1216,
+    "y": 704,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ut52": {
+    "x": 1216,
+    "y": 768,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ut130": {
+    "x": 1216,
     "y": 832,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "cm_min_svc": {
-    "x": 640,
-    "y": 1152,
+  "ut34": {
+    "x": 1216,
+    "y": 896,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "aport_dfw": {
+    "x": 576,
+    "y": 1184,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
-  "port_tac": {
-    "x": 768,
-    "y": 1152,
-    "width": 128,
-    "height": 32,
+  "ut56": {
+    "x": 1216,
+    "y": 960,
+    "width": 64,
+    "height": 64,
     "pixelRatio": 2
   },
   "kw_trk_pln": {
-    "x": 896,
-    "y": 1152,
+    "x": 704,
+    "y": 1184,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "port_sea": {
-    "x": 1024,
-    "y": 1152,
+    "x": 832,
+    "y": 1184,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
   "wy450": {
     "x": 1216,
-    "y": 896,
+    "y": 1024,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
+  "port_tac": {
+    "x": 960,
+    "y": 1184,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
   "wy220": {
     "x": 1216,
-    "y": 960,
+    "y": 1088,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "wy487": {
     "x": 1216,
-    "y": 1024,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "wy28": {
-    "x": 1216,
-    "y": 1088,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "nmq_min_qrya": {
-    "x": 0,
-    "y": 1184,
-    "width": 128,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "wy22": {
-    "x": 0,
-    "y": 1216,
+    "y": 1152,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "gol_trk_pln": {
-    "x": 128,
+    "x": 1088,
     "y": 1184,
     "width": 128,
     "height": 32,
     "pixelRatio": 2
   },
+  "nmq_min_qrya": {
+    "x": 0,
+    "y": 1216,
+    "width": 128,
+    "height": 32,
+    "pixelRatio": 2
+  },
   "wy351": {
-    "x": 64,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us400": {
-    "x": 128,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us75": {
-    "x": 192,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us82": {
-    "x": 256,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us36": {
-    "x": 320,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us34": {
-    "x": 384,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us275": {
-    "x": 448,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us20": {
-    "x": 512,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us136": {
-    "x": 576,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us69": {
-    "x": 640,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us54": {
-    "x": 704,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us64": {
-    "x": 768,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us70": {
-    "x": 832,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us59": {
-    "x": 896,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us259": {
-    "x": 960,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us412": {
-    "x": 1024,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us71": {
-    "x": 1088,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us171": {
-    "x": 1152,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us84": {
-    "x": 1216,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us96": {
     "x": 1280,
     "y": 0,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us65": {
+  "wy28": {
     "x": 1280,
     "y": 64,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us167": {
+  "wy22": {
     "x": 1280,
     "y": 128,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us63": {
+  "us400": {
     "x": 1280,
     "y": 192,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us425": {
+  "us75": {
     "x": 1280,
     "y": 256,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us165": {
+  "us82": {
     "x": 1280,
     "y": 320,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us61": {
+  "us36": {
     "x": 1280,
     "y": 384,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us80": {
+  "us34": {
     "x": 1280,
     "y": 448,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us67": {
+  "us136": {
     "x": 1280,
     "y": 512,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us77": {
+  "us275": {
     "x": 1280,
     "y": 576,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us81": {
+  "us20": {
     "x": 1280,
     "y": 640,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us287": {
+  "us69": {
     "x": 1280,
     "y": 704,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us183": {
+  "us54": {
     "x": 1280,
     "y": 768,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us281": {
+  "us412": {
     "x": 1280,
     "y": 832,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us83": {
+  "us59": {
     "x": 1280,
     "y": 896,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us62": {
+  "us64": {
     "x": 1280,
     "y": 960,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us70": {
+    "x": 1280,
+    "y": 1024,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us259": {
+    "x": 1280,
+    "y": 1088,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us71": {
+    "x": 1280,
+    "y": 1152,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us84": {
+    "x": 0,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us171": {
+    "x": 64,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us96": {
+    "x": 128,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us65": {
+    "x": 192,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us167": {
+    "x": 256,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us63": {
+    "x": 320,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us425": {
+    "x": 384,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us165": {
+    "x": 448,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us80": {
+    "x": 512,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us61": {
+    "x": 576,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us24": {
+    "x": 640,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us67": {
+    "x": 704,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "mo74": {
+    "x": 768,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us77": {
+    "x": 832,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us81": {
+    "x": 896,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us281": {
+    "x": 960,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us183": {
+    "x": 1024,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us287": {
+    "x": 1088,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us83": {
+    "x": 1152,
+    "y": 1248,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us62": {
+    "x": 1216,
+    "y": 1248,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "us50": {
     "x": 1280,
-    "y": 1024,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us385": {
-    "x": 1280,
-    "y": 1088,
+    "y": 1248,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "us26": {
-    "x": 1280,
-    "y": 1152,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us87": {
-    "x": 1280,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us56": {
-    "x": 0,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us180": {
-    "x": 64,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "nm104": {
-    "x": 128,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "nm209": {
-    "x": 192,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "nm237": {
-    "x": 256,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us85": {
-    "x": 320,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us30": {
-    "x": 384,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "nm529": {
-    "x": 448,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ne92": {
-    "x": 512,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us285": {
-    "x": 576,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us212": {
-    "x": 640,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "co13": {
-    "x": 704,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us310": {
-    "x": 768,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us160": {
-    "x": 832,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us550": {
-    "x": 896,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us491": {
-    "x": 960,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us40": {
-    "x": 1024,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "co64": {
-    "x": 1088,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us191": {
-    "x": 1152,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us89": {
-    "x": 1216,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us189": {
-    "x": 1280,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us91": {
     "x": 1344,
     "y": 0,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us89a": {
+  "us87": {
     "x": 1344,
     "y": 64,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us12": {
+  "us56": {
     "x": 1344,
     "y": 128,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us95": {
+  "us180": {
     "x": 1344,
     "y": 192,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us2": {
+  "us385": {
     "x": 1344,
     "y": 256,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us93": {
+  "nm209": {
     "x": 1344,
     "y": 320,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us395": {
+  "nm104": {
     "x": 1344,
     "y": 384,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us6": {
+  "nm237": {
     "x": 1344,
     "y": 448,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us101": {
+  "us85": {
     "x": 1344,
     "y": 512,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us270": {
+  "ne92": {
     "x": 1344,
     "y": 576,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us79": {
+  "us30": {
     "x": 1344,
     "y": 640,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us163": {
+  "us285": {
     "x": 1344,
     "y": 704,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us60": {
+  "nm529": {
     "x": 1344,
     "y": 768,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us24": {
+  "co13": {
     "x": 1344,
     "y": 832,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us350": {
+  "us212": {
     "x": 1344,
     "y": 896,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "co67": {
+  "us550": {
     "x": 1344,
     "y": 960,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "ia60": {
+  "us310": {
     "x": 1344,
     "y": 1024,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "co139": {
+  "us160": {
     "x": 1344,
     "y": 1088,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "co64": {
+    "x": 1344,
+    "y": 1152,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us40": {
+    "x": 1344,
+    "y": 1216,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us191": {
+    "x": 0,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us491": {
+    "x": 64,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us89": {
+    "x": 128,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us189": {
+    "x": 192,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us91": {
+    "x": 256,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us93": {
+    "x": 320,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us89a": {
+    "x": 384,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us12": {
+    "x": 448,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us2": {
+    "x": 512,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us95": {
+    "x": 576,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us395": {
+    "x": 640,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us6": {
+    "x": 704,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us101": {
+    "x": 768,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us270": {
+    "x": 832,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us79": {
+    "x": 896,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us163": {
+    "x": 960,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us60": {
+    "x": 1024,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us350": {
+    "x": 1088,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "co67": {
+    "x": 1152,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "co131": {
+    "x": 1216,
+    "y": 1312,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "co139": {
+    "x": 1280,
+    "y": 1312,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "us18": {
     "x": 1344,
-    "y": 1152,
+    "y": 1312,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "co131": {
-    "x": 1344,
-    "y": 1216,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us218": {
-    "x": 1344,
-    "y": 1280,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us52": {
-    "x": 0,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la26": {
-    "x": 64,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la14": {
-    "x": 128,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la27": {
-    "x": 192,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la82": {
-    "x": 256,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la1": {
-    "x": 320,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la15": {
-    "x": 384,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us190": {
-    "x": 448,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la3213": {
-    "x": 512,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la24": {
-    "x": 576,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us90": {
-    "x": 640,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la20": {
-    "x": 704,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la182": {
-    "x": 768,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la661": {
-    "x": 832,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la57": {
-    "x": 896,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us51": {
-    "x": 960,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "mo7": {
-    "x": 1024,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "la315": {
-    "x": 1088,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "mo13": {
-    "x": 1152,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "mo32": {
-    "x": 1216,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "mt232a": {
-    "x": 1280,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ne50": {
-    "x": 1344,
-    "y": 1344,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "ne2": {
+  "ia60": {
     "x": 1408,
     "y": 0,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us93alt": {
+  "us218": {
     "x": 1408,
     "y": 64,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us380": {
+  "us52": {
     "x": 1408,
     "y": 128,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "nm500": {
+  "us41": {
     "x": 1408,
     "y": 192,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "nm118": {
+  "la27": {
     "x": 1408,
     "y": 256,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "nm602": {
+  "la82": {
     "x": 1408,
     "y": 320,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us271": {
+  "la15": {
     "x": 1408,
     "y": 384,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "or78": {
+  "us190": {
     "x": 1408,
     "y": 448,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "or140": {
+  "la1": {
     "x": 1408,
     "y": 512,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us97": {
+  "la14": {
     "x": 1408,
     "y": 576,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us197": {
+  "la26": {
     "x": 1408,
     "y": 640,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "or58": {
+  "la3213": {
     "x": 1408,
     "y": 704,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "or39": {
+  "us90": {
     "x": 1408,
     "y": 768,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "us199": {
+  "la182": {
     "x": 1408,
     "y": 832,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "tx31": {
+  "la24": {
     "x": 1408,
     "y": 896,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "txl323": {
+  "us51": {
     "x": 1408,
     "y": 960,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "tx7": {
+  "la20": {
     "x": 1408,
     "y": 1024,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "tx94": {
+  "la57": {
     "x": 1408,
     "y": 1088,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "tx35": {
+  "la315": {
     "x": 1408,
     "y": 1152,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "tx146": {
+  "la661": {
     "x": 1408,
     "y": 1216,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "tx124": {
+  "mo13": {
     "x": 1408,
     "y": 1280,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "tx87": {
+  "mo7": {
+    "x": 0,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "mo32": {
+    "x": 64,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "mt232a": {
+    "x": 128,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ne50": {
+    "x": 192,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "ne2": {
+    "x": 256,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us93alt": {
+    "x": 320,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us380": {
+    "x": 384,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "nm500": {
+    "x": 448,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "nm602": {
+    "x": 512,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us271": {
+    "x": 576,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "nm118": {
+    "x": 640,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "or78": {
+    "x": 704,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "or140": {
+    "x": 768,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us97": {
+    "x": 832,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us197": {
+    "x": 896,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "or58": {
+    "x": 960,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "tx31": {
+    "x": 1024,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "or39": {
+    "x": 1088,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "us199": {
+    "x": 1152,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "tx94": {
+    "x": 1216,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "tx7": {
+    "x": 1280,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "txl323": {
+    "x": 1344,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "tx35": {
     "x": 1408,
-    "y": 1344,
+    "y": 1376,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "tx146": {
+    "x": 1472,
+    "y": 0,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "tx124": {
+    "x": 1472,
+    "y": 64,
+    "width": 64,
+    "height": 64,
+    "pixelRatio": 2
+  },
+  "tx87": {
+    "x": 1472,
+    "y": 128,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "tx71": {
-    "x": 0,
-    "y": 1408,
+    "x": 1472,
+    "y": 192,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "us277": {
-    "x": 64,
-    "y": 1408,
+    "x": 1472,
+    "y": 256,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "us377": {
-    "x": 128,
-    "y": 1408,
+    "x": 1472,
+    "y": 320,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "us290": {
-    "x": 192,
-    "y": 1408,
+    "x": 1472,
+    "y": 384,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "us57": {
-    "x": 256,
-    "y": 1408,
+    "x": 1472,
+    "y": 448,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "txl338": {
-    "x": 320,
-    "y": 1408,
+    "x": 1472,
+    "y": 512,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "wa20": {
-    "x": 384,
-    "y": 1408,
+    "x": 1472,
+    "y": 576,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "wa155": {
-    "x": 448,
-    "y": 1408,
-    "width": 64,
-    "height": 64,
-    "pixelRatio": 2
-  },
-  "us14": {
-    "x": 512,
-    "y": 1408,
+    "x": 1472,
+    "y": 640,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
   "us16": {
-    "x": 576,
-    "y": 1408,
+    "x": 1472,
+    "y": 704,
     "width": 64,
     "height": 64,
     "pixelRatio": 2
   },
-  "trafficlight": {
-    "x": 640,
-    "y": 1408,
-    "width": 48,
+  "us14": {
+    "x": 1472,
+    "y": 768,
+    "width": 64,
     "height": 64,
-    "pixelRatio": 2
-  },
-  "gas_ico": {
-    "x": 1216,
-    "y": 1152,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "parking_ico": {
-    "x": 1248,
-    "y": 1152,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "weigh_station_ico": {
-    "x": 1088,
-    "y": 1024,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "toll_ico": {
-    "x": 1120,
-    "y": 1024,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "viewpoint": {
-    "x": 960,
-    "y": 896,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "photo_sight_captured": {
-    "x": 992,
-    "y": 896,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "service_ico": {
-    "x": 896,
-    "y": 832,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "garage_large_ico": {
-    "x": 928,
-    "y": 832,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "dealer_ico": {
-    "x": 384,
-    "y": 320,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "recruitment_ico": {
-    "x": 416,
-    "y": 320,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "agri_check": {
-    "x": 320,
-    "y": 288,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "port_overlay": {
-    "x": 352,
-    "y": 288,
-    "width": 32,
-    "height": 32,
-    "pixelRatio": 2
-  },
-  "dot": {
-    "x": 320,
-    "y": 320,
-    "width": 20,
-    "height": 20,
-    "pixelRatio": 2
-  },
-  "dotdot": {
-    "x": 340,
-    "y": 320,
-    "width": 20,
-    "height": 20,
     "pixelRatio": 2
   }
 }

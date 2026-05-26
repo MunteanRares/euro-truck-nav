@@ -97,4 +97,10 @@ export const atsExpansions: Record<
         imagePath: "louisiana.webp",
         releaseDate: "Dec 4, 2025",
     },
+
+    17: {
+        name: "llinois",
+        imagePath: "illinois.webp",
+        releaseDate: "May 14, 2026",
+    },
 };

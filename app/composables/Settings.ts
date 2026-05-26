@@ -69,7 +69,7 @@ const DEFAULT_SETTINGS: AppSettingsState = {
         ats: {
             ...DEFAULT_PROFILE,
             themeColor: "#d32f2f",
-            ownedDlcs: Array.from({ length: 16 }, (_, i) => i + 1),
+            ownedDlcs: Array.from({ length: 17 }, (_, i) => i + 1),
             units: "imperial",
         },
     },
