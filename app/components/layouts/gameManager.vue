@@ -34,7 +34,13 @@ const availableMods = computed(() => {
                 url: "https://trucknavapp.com/promods-europe.zip",
             },
         ],
-        ats: [],
+        ats: [
+            {
+                id: "promods-canada",
+                name: "ProMods Canada",
+                url: "https://trucknavapp.com/promods-canada.zip",
+            },
+        ],
     };
     return mods[selectedGame.value] || [];
 });
@@ -178,6 +184,15 @@ function toggleModPanel() {
 
             <template v-else-if="!isBaseDownloaded && selectedGame">
                 <div class="bottom-download-button">
+                    <InfoBox type="note">
+                        <template #content>
+                            <p>
+                                Please make sure that TruckNav PC Companion is
+                                running before downloading
+                            </p>
+                        </template></InfoBox
+                    >
+
                     <button
                         @click.prevent="
                             startDownload(
