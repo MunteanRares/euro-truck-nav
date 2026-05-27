@@ -1,7 +1,7 @@
 {
     "name": "truck-nav",
     "productName": "TruckNav",
-    "version": "0.4.4",
+    "version": "0.5.0",
     "description": "Real-time GPS navigation route advisor for ETS2. Second monitor map with live tracking and routing.",
     "author": {
         "name": "RaresMuntean",
@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "@capacitor-community/electron": "^5.0.0",
+        "axios": "^1.16.1",
         "chokidar": "~3.5.3",
         "discord-rpc": "^4.0.1",
         "electron-is-dev": "~2.0.0",
@@ -30,6 +31,7 @@
         "electron-updater": "^6.6.2",
         "electron-window-state": "^5.0.3",
         "express": "^5.2.1",
+        "extract-zip": "^2.0.1",
         "native-reg": "^1.1.1"
     },
     "devDependencies": {

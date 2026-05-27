@@ -356,7 +356,13 @@ async function handleMapDownload(mapId: string, url: string, event?: any) {
             url,
             method: "GET",
             responseType: "stream",
+            headers: {
+                "User-Agent":
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Accept-Encoding": "identity",
+            },
         });
+
         const totalLength = parseInt(
             String(response.headers["content-length"] || "0"),
             10,
@@ -368,15 +374,20 @@ async function handleMapDownload(mapId: string, url: string, event?: any) {
 
         response.data.on("data", (chunk: any) => {
             downloadedBytes += chunk.length;
-            if (totalLength) {
+
+            if (totalLength > 0) {
                 currentDownloadProgress = Math.round(
                     (downloadedBytes / totalLength) * 100,
                 );
-                if (event)
-                    event.sender.send(
-                        "map-download-progress",
-                        currentDownloadProgress,
-                    );
+            } else {
+                currentDownloadProgress = -1;
+            }
+
+            if (event) {
+                event.sender.send(
+                    "map-download-progress",
+                    currentDownloadProgress,
+                );
             }
         });
 
@@ -390,6 +401,7 @@ async function handleMapDownload(mapId: string, url: string, event?: any) {
         currentDownloadProgress = 0;
         return true;
     } catch (e) {
+        console.error("Map download failed:", e);
         currentDownloadProgress = 0;
         return false;
     }
@@ -421,7 +433,6 @@ async function startWebServer() {
     });
 
     server.post("/api/download-map", async (req, res) => {
-        handleMapDownload(req.body.mapId, req.body.url);
         const success = await handleMapDownload(req.body.mapId, req.body.url);
 
         res.json({ success });

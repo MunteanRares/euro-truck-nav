@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref, computed, watch, onMounted } from "vue";
+
 import {
     downloadMapData,
     isMapDownloaded,
@@ -46,6 +47,14 @@ const availableMods = computed(() => {
 });
 
 onMounted(async () => {
+    // const script = document.createElement("script");
+    // script.src = "https://cdn.jsdelivr.net/npm/eruda";
+    // document.body.appendChild(script);
+    // script.onload = () => {
+    //     (window as any).eruda.init();
+    //     console.log("Eruda mobile console loaded and styled successfully!");
+    // };
+
     if (selectedGame.value) {
         isBaseDownloaded.value = await isMapDownloaded(selectedGame.value);
         await checkModStatuses();
@@ -210,7 +219,9 @@ function toggleModPanel() {
                     <ProgressBar
                         class="progress-bar"
                         v-if="isDownloading && downloadingId === selectedGame"
-                        :progress="downloadProgress"
+                        :progress="
+                            downloadProgress === -1 ? 99 : downloadProgress
+                        "
                     />
                 </div>
             </template>
@@ -255,7 +266,11 @@ function toggleModPanel() {
                                 <strong>{{ mod.name }}</strong>
                                 <ProgressBar
                                     v-if="downloadingId === mod.id"
-                                    :progress="downloadProgress"
+                                    :progress="
+                                        downloadProgress === -1
+                                            ? 99
+                                            : downloadProgress
+                                    "
                                     style="margin-top: 8px"
                                 />
                             </div>
@@ -277,7 +292,11 @@ function toggleModPanel() {
                                     class="downloading-text"
                                     v-else-if="downloadingId === mod.id"
                                 >
-                                    {{ downloadProgress || 0 }}%
+                                    {{
+                                        downloadProgress === -1
+                                            ? "In Progress"
+                                            : (downloadProgress || 0) + "%"
+                                    }}
                                 </span>
 
                                 <template v-else>

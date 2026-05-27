@@ -21,13 +21,19 @@ async function getBaseUrl() {
  * Downloads and extracts data into Directory.Data/maps
  * @param mapName: Name of the map directory (e.g ets2, ats)
  * @param zipUrl: URL of the zip archive to download
- * @param onProgress: Optional callback that recieves download progress as a percentage
+ * @param onProgress: Optional callback that receives download progress as a percentage
  */
 export async function downloadMapData(
     mapName: string,
     zipUrl: string,
     onProgress?: (percent: number) => void,
 ) {
+    console.log(`[DEBUG] downloadMapData started for map: ${mapName}`);
+    console.log(`[DEBUG] URL: ${zipUrl}`);
+    console.log(
+        `[DEBUG] Platform: Electron? ${isElectron.value}, Web? ${isWeb.value}`,
+    );
+
     if (isElectron.value) {
         if (onProgress) {
             (window as any).electronAPI.onMapProgress((pct: number) => {
@@ -41,8 +47,10 @@ export async function downloadMapData(
     if (isWeb.value || process.dev) {
         try {
             const base = await getBaseUrl();
+            console.log(`[DEBUG] Running on Web. Base URL is ${base}`);
             const progressInterval = setInterval(async () => {
                 const res = await axios.get(`${base}/api/download-progress`);
+                console.log(`[DEBUG] Web Progress: ${res.data.progress}%`);
                 if (onProgress) onProgress(res.data.progress);
             }, 500);
 
@@ -54,7 +62,8 @@ export async function downloadMapData(
             clearInterval(progressInterval);
             if (onProgress) onProgress(100);
             return true;
-        } catch {
+        } catch (webErr: any) {
+            console.error("[DEBUG] Web download failed:", webErr);
             return false;
         }
     }
@@ -63,34 +72,66 @@ export async function downloadMapData(
     const extractPath = `maps/${mapName}`;
 
     try {
+        console.log(`[DEBUG] Ensuring parent directory 'maps' exists...`);
+        try {
+            await Filesystem.mkdir({
+                path: "maps",
+                directory: Directory.Data,
+                recursive: true,
+            });
+            console.log(`[DEBUG] Directory 'maps' verified/created.`);
+        } catch (dirError) {
+            console.log(`[DEBUG] Note on maps dir:`, dirError);
+        }
+
         const zipUri = await Filesystem.getUri({
             path: zipPath,
             directory: Directory.Data,
         });
+        console.log(`[DEBUG] Target ZIP URI: ${zipUri.uri}`);
 
         const extractUri = await Filesystem.getUri({
             path: extractPath,
             directory: Directory.Data,
         });
+        console.log(`[DEBUG] Target Extract URI: ${extractUri.uri}`);
 
-        // Downloading
         FileTransfer.addListener("progress", (progress) => {
-            const percent = Math.round(
-                (progress.bytes / progress.contentLength) * 100,
+            const total = progress.contentLength || 0;
+            let percent = 0;
+
+            if (total > 0) {
+                percent = Math.round((progress.bytes / total) * 100);
+            } else {
+                percent = -1;
+            }
+            console.log(
+                `[DEBUG] Download progress: ${progress.bytes} / ${total} (${percent}%)`,
             );
 
             if (onProgress) onProgress(percent);
         });
 
+        console.log(`[DEBUG] Initiating FileTransfer.downloadFile...`);
         await FileTransfer.downloadFile({
             url: zipUrl,
             path: zipUri.uri,
             progress: true,
+            headers: {
+                "User-Agent":
+                    "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+                "Accept-Encoding": "identity",
+            },
         });
+        console.log(`[DEBUG] FileTransfer download complete.`);
 
         // Extracting
         const nativeZipPath = zipUri.uri.replace("file://", "");
         const nativeExtractPath = extractUri.uri.replace("file://", "");
+
+        console.log(`[DEBUG] Initiating unzip process...`);
+        console.log(`[DEBUG] Source ZIP: ${nativeZipPath}`);
+        console.log(`[DEBUG] Destination: ${nativeExtractPath}`);
 
         if (Capacitor.getPlatform() === "electron") {
             // Electron logic
@@ -100,15 +141,23 @@ export async function downloadMapData(
                 destination: nativeExtractPath,
             });
         }
+        console.log(`[DEBUG] Unzip complete.`);
 
+        console.log(`[DEBUG] Deleting downloaded zip archive...`);
         await Filesystem.deleteFile({
             path: zipPath,
             directory: Directory.Data,
         });
+        console.log(`[DEBUG] ZIP archive deleted.`);
 
         return true;
-    } catch (e) {
-        console.log("Failed to download map data: ", e);
+    } catch (e: any) {
+        console.error(
+            "[DEBUG] FATAL ERROR during mobile download/extract: ",
+            e,
+        );
+        if (e.message) console.error("[DEBUG] Error message:", e.message);
+        if (e.stack) console.error("[DEBUG] Error stack:", e.stack);
         return false;
     }
 }
