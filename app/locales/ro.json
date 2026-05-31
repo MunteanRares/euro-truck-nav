@@ -105,7 +105,8 @@
         "german": "Germană",
         "slovak": "Slovacă",
         "romanian": "Română",
-        "korean": "Coreeană"
+        "korean": "Coreeană",
+        "chinese": "Chineză"
     },
     "uiComponents": {
         "fuelDescription": "Arată nivelul de combustibil rămas și notifică atunci când rămâne puțin.",

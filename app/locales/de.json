@@ -105,7 +105,8 @@
         "german": "Deutsch",
         "slovak": "Slowakisch",
         "romanian": "Rumänisch",
-        "korean": "Koreanisch"
+        "korean": "Koreanisch",
+        "chinese": "Chinesisch"
     },
     "uiComponents": {
         "fuelDescription": "Zeigt deinen verbleibenden Kraftstoff an und pulsiert bei niedrigem Stand.",
