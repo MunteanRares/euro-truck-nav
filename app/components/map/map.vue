@@ -372,11 +372,10 @@ onMounted(async () => {
             const graphData = await initializeGraphData();
             if (!graphData) return;
 
-            initWorkerData(
-                graphData.nodes,
-                graphData.graphBuffer,
-                graphData.geometryBuffer,
-            );
+            const { nodes, graphBuffer, geometryBuffer } = graphData;
+            if (!nodes || !graphBuffer || !geometryBuffer) return;
+
+            initWorkerData(nodes, graphBuffer, geometryBuffer);
 
             setupRouteLayer();
             initCameraListeners();

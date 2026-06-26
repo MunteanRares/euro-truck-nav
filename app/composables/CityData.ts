@@ -5,7 +5,6 @@ import {
 import { getActiveMapFolder } from "~/assets/utils/map/helpers";
 import { type WorkerCityArea } from "~/assets/utils/routing/algorithm";
 import { getMapFileUrl } from "~/assets/utils/shared/fileManager";
-import type { GameType } from "~/types";
 
 // --- Types ---
 export interface ScsCityArea {

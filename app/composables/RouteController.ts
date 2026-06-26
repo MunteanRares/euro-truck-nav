@@ -15,6 +15,8 @@ import {
     type DirectionStep,
 } from "~/assets/utils/routing/directions";
 
+import RouteWorker from "~/workers/route.worker?worker&inline";
+
 export const useRouteController = (
     map: Ref<maplibregl.Map | null>,
     adjacency: Map<number, any>,
@@ -109,10 +111,7 @@ export const useRouteController = (
 
     let worker: Worker | null = null;
     if (import.meta.client) {
-        worker = new Worker(
-            new URL("~/workers/route.worker.ts", import.meta.url),
-            { type: "module" },
-        );
+        worker = new RouteWorker();
 
         worker.onmessage = (e) => {
             if (e.data.type === "READY") console.log("Web Worker Ready.");
@@ -124,25 +123,35 @@ export const useRouteController = (
             worker.terminate();
             worker = null;
         }
+        isWorkerReady.value = false;
     }
 
     function initWorkerData(
-        nodesArray: any[],
-        graphBuffer: ArrayBuffer | null,
-        geometryBuffer: ArrayBuffer | null,
+        nodesCoordsBuffer: ArrayBuffer,
+        graphBuffer: ArrayBuffer,
+        geometryBuffer: ArrayBuffer,
     ) {
         if (!worker) return;
         const cityPayload = getWorkerCityData();
 
-        worker.postMessage({
-            type: "INIT_GRAPH",
-            payload: {
-                nodes: nodesArray,
-                graphBuffer: graphBuffer,
-                geometryBuffer: geometryBuffer,
-                cities: cityPayload,
+        const transferables: Transferable[] = [
+            nodesCoordsBuffer,
+            graphBuffer,
+            geometryBuffer,
+        ];
+
+        worker.postMessage(
+            {
+                type: "INIT_GRAPH",
+                payload: {
+                    nodesCoordsBuffer: nodesCoordsBuffer,
+                    graphBuffer: graphBuffer,
+                    geometryBuffer: geometryBuffer,
+                    cities: cityPayload,
+                },
             },
-        });
+            transferables,
+        );
 
         isWorkerReady.value = true;
     }

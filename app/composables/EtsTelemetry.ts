@@ -128,6 +128,7 @@ export function useEtsTelemetry() {
 
     function stopTelemetry() {
         if (socket) {
+            socket.onclose = null;
             socket.close();
             socket = null;
         }

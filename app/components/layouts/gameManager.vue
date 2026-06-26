@@ -14,14 +14,12 @@ const { t } = useTranslations();
 
 const emit = defineEmits(["connected", "goBack"]);
 
-// Core States
 const isDownloading = ref(false);
 const downloadProgress = ref(0);
 const downloadingId = ref<string | null>(null);
 const isBaseDownloaded = ref(false);
 const isModPanelOpen = ref(false);
 
-// Local cache for downloaded mods
 const downloadedMods = ref<Record<string, boolean>>({});
 
 const availableMods = computed(() => {
@@ -47,14 +45,6 @@ const availableMods = computed(() => {
 });
 
 onMounted(async () => {
-    // const script = document.createElement("script");
-    // script.src = "https://cdn.jsdelivr.net/npm/eruda";
-    // document.body.appendChild(script);
-    // script.onload = () => {
-    //     (window as any).eruda.init();
-    //     console.log("Eruda mobile console loaded and styled successfully!");
-    // };
-
     if (selectedGame.value) {
         isBaseDownloaded.value = await isMapDownloaded(selectedGame.value);
         await checkModStatuses();
@@ -96,20 +86,17 @@ async function startDownload(mapId: string, zipUrl: string) {
         if (mapId === selectedGame.value) {
             isBaseDownloaded.value = true;
         } else {
-            // Instantly update mod status if it's a mod
             downloadedMods.value[mapId] = true;
         }
     }
 }
 
 async function uninstallMap(mapId?: string) {
-    // Fall back to selectedGame if no mapId is explicitly passed
     const idToUninstall = mapId || selectedGame.value;
     if (!idToUninstall) return;
 
     await uninstallMapData(idToUninstall);
 
-    // If we uninstalled the currently active mod, revert active settings to 'none'
     if (activeSettings.value.activeMod === idToUninstall) {
         updateProfile("activeMod", "none");
     }

@@ -1,3 +1,4 @@
+import { ref } from "vue";
 import RBush from "rbush";
 import { loadGraph } from "~/assets/utils/routing/clientGraph";
 import { haversine } from "~/assets/utils/routing/helpers";
@@ -19,8 +20,7 @@ const loading = ref(true);
 const progress = ref(0);
 
 export function useGraphSystem() {
-    let rawNodesForWorker: any[] = [];
-
+    let workerNodesCoordsBuffer: ArrayBuffer | null = null;
     let workerGraphBuffer: ArrayBuffer | null = null;
     let workerGeometryBuffer: ArrayBuffer | null = null;
 
@@ -118,10 +118,19 @@ export function useGraphSystem() {
                 }
             }
 
-            rawNodesForWorker = Array.from(uniqueNodes.values()).map((n) => [
-                n.id,
-                [n.lng, n.lat],
-            ]);
+            let maxNodeId = 0;
+            for (const id of uniqueNodes.keys()) {
+                if (id > maxNodeId) {
+                    maxNodeId = id;
+                }
+            }
+
+            const flatCoords = new Float64Array((maxNodeId + 1) * 2);
+            for (const node of uniqueNodes.values()) {
+                flatCoords[node.id * 2] = node.lng;
+                flatCoords[node.id * 2 + 1] = node.lat;
+            }
+            workerNodesCoordsBuffer = flatCoords.buffer;
 
             const items: NodeIndexItem[] = [];
             for (const node of uniqueNodes.values()) {
@@ -150,7 +159,7 @@ export function useGraphSystem() {
         }
 
         return {
-            nodes: rawNodesForWorker,
+            nodes: workerNodesCoordsBuffer,
             graphBuffer: workerGraphBuffer,
             geometryBuffer: workerGeometryBuffer,
         };
