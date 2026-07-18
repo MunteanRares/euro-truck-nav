@@ -28,12 +28,6 @@ const currentJobKey = ref<string>("");
 // NOTIFICATION TRIGGERS
 const clickingNotificationTrigger = ref(0);
 
-//
-//
-//// ======> COMPOSABLES <======
-
-//
-//
 // Telemetry Data
 const {
     startTelemetry,
@@ -55,24 +49,16 @@ const {
     destinationCompany,
 } = useEtsTelemetry();
 
-//
-//
 // Map Areas Data
 const { loadLocationData, findDestinationCoords } = useCityData();
 
-//
-//
 // Check Platform
 const { isElectron, isMobile, isWeb } = usePlatform();
 
-//
-//
 // Graph manipulation
 const { loading, progress, adjacency, nodeCoords, initializeGraphData } =
     useGraphSystem();
 
-//
-//
 // Maplibre Camera
 const {
     isCameraLocked,
@@ -88,11 +74,9 @@ const {
     toggleAutoFollow,
 } = useMapCamera(map);
 
-//
-//
-// Route Controller
 const {
     setupRouteLayer,
+    handleMultiRouteCalculation,
     handleRouteClick,
     updateRouteProgress,
     clearRouteState,
@@ -107,10 +91,10 @@ const {
     routeFound,
     fullRouteDirections,
     nextTurnDistance,
+    waypointList,
+    removeWaypointAtIndex,
 } = useRouteController(map, adjacency, nodeCoords, stopNavigationMode);
 
-//
-//
 // Settings Controller
 const { activeSettings, settings } = useSettings();
 const { t } = useTranslations();
@@ -118,7 +102,6 @@ const { t } = useTranslations();
 let uiTimer: ReturnType<typeof setTimeout> | null = null;
 let routeTimer: ReturnType<typeof setTimeout> | null = null;
 
-// Forcing loading screen before mounting elements to prevent flashing between game changes
 loading.value = true;
 progress.value = 0;
 
@@ -214,7 +197,6 @@ watch(
     },
 );
 
-// We check each time the theme color changes to udate the map libre appsettings.default theme color
 watch(
     () => activeSettings.value.themeColor,
     async (newColor) => {
@@ -230,7 +212,6 @@ watch(
     },
 );
 
-// We check each time the background color changes to update the map libre color
 watch(
     () => activeSettings.value.backgroundColor,
     async (newColor) => {
@@ -246,7 +227,6 @@ watch(
     },
 );
 
-// We check each time the land color changes to update the map libre color
 watch(
     () => activeSettings.value.landColor,
     async (newColor) => {
@@ -274,7 +254,6 @@ watch(
     },
 );
 
-// We check each time the road color changes to update the map libre color
 watch(
     () => activeSettings.value.roadColor,
     async (newColor) => {
@@ -286,7 +265,6 @@ watch(
     },
 );
 
-// We check each time the truck marker size changes to update the map libre truck marker elemeent size
 watch(
     () => settings.value.truckMarkerSize,
     (newSize) => {
@@ -296,7 +274,6 @@ watch(
     },
 );
 
-// We check each time the text font changes to udate to the settings text font
 watch(
     () => activeSettings.value.fontFamily,
     (newFont) => {
@@ -317,7 +294,6 @@ watch(
     },
 );
 
-// We set the routeFound back to null with a delay if its true / false.
 watch(routeFound, (newVal) => {
     if (newVal !== null) {
         if (uiTimer) clearTimeout(uiTimer);
@@ -328,7 +304,6 @@ watch(routeFound, (newVal) => {
     }
 });
 
-// When loaded, checks gameConnected -> show map
 watch([loading, gameConnected], ([isLoading, isGameConnected]) => {
     if (!isLoading) {
         setTimeout(() => {
@@ -352,7 +327,6 @@ watch(gameConnected, (isConnected) => {
 });
 
 onMounted(async () => {
-    // eruda.init(); // KEEP FOR DEBUGGING MOBILE
     await loadLocationData();
     if (!mapEl.value) return;
     if (isElectron.value) {
@@ -387,9 +361,6 @@ onMounted(async () => {
             });
             if (features.length > 0) return;
 
-            console.log(
-                ` ${e.lngLat.lat.toFixed(5)}, ${e.lngLat.lng.toFixed(5)}`,
-            ); // KEEP FOR DEBUGGING BUGGED AREAS
             if (!isClickingEnabled.value) return;
             if (!gameConnected.value) return;
             if (!truckCoords.value) return;
@@ -401,12 +372,12 @@ onMounted(async () => {
                     ? 20
                     : 19;
 
-            await handleRouteClick(
-                [e.lngLat.lng, e.lngLat.lat],
+            waypointList.value.push([e.lngLat.lng, e.lngLat.lat]);
+
+            await handleMultiRouteCalculation(
                 truckCoords.value,
                 truckHeading.value,
                 currentScale,
-                true,
                 averageSpeed.value,
             );
         });

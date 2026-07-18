@@ -35,8 +35,6 @@ export const useRouteController = (
     const routeDistance = ref<number>(0);
     const routeEta = ref<string>("");
 
-    const savedDestination = ref<[number, number] | null>(null);
-
     const isRouteActive = ref(false);
     const isYardStart = ref(false);
 
@@ -54,6 +52,9 @@ export const useRouteController = (
 
     const fullRouteDirections = ref<DirectionStep[]>([]);
     const nextTurnDistance = ref<number>(0);
+
+    const waypointList = ref<[number, number][]>([]);
+    const snappedWaypointNodeIds = ref<number[]>([]);
 
     watch(
         () => activeSettings.value.themeColor,
@@ -154,6 +155,270 @@ export const useRouteController = (
         );
 
         isWorkerReady.value = true;
+    }
+
+    async function handleMultiRouteCalculation(
+        truckCoords: [number, number],
+        truckHeading: number,
+        sdkScale: number,
+        avgSpeed: number,
+    ) {
+        if (
+            waypointList.value.length === 0 ||
+            adjacency.size === 0 ||
+            isCalculating.value ||
+            !isWorkerReady.value
+        ) {
+            return;
+        }
+
+        isCalculating.value = true;
+        routeFound.value = null;
+
+        try {
+            const startConfig = findBestStartConfiguration(
+                truckCoords,
+                truckHeading,
+                50,
+            );
+            if (!startConfig) {
+                isCalculating.value = false;
+                return;
+            }
+
+            isYardStart.value = startConfig.type === "yard";
+            startNodeId.value = startConfig.toId;
+
+            const waypointsNodeGroups: number[][] = [];
+            for (const waypoint of waypointList.value) {
+                let candidates = getClosestNodes(waypoint, 10, 0.1);
+
+                if (candidates.length === 0) {
+                    candidates = getClosestNodes(waypoint, 10, 0.4);
+                }
+                if (candidates.length === 0) {
+                    candidates = getClosestNodes(waypoint, 10, 1.5);
+                }
+
+                waypointsNodeGroups.push(candidates);
+            }
+
+            const userDlcs = toRaw(activeSettings.value.ownedDlcs);
+
+            const result = await calculateMultiRouteInWorker(
+                startNodeId.value!,
+                waypointList.value,
+                waypointsNodeGroups,
+                truckHeading,
+                startConfig.type as "road" | "yard",
+                userDlcs,
+                sdkScale,
+                avgSpeed,
+            );
+
+            if (result) {
+                isRouteActive.value = true;
+                endNodeId.value = result.endId;
+
+                snappedWaypointNodeIds.value = result.snappedNodeIds || [];
+
+                const frozenRawPath = Object.freeze(result.displayPath);
+                currentRoutePath.value = frozenRawPath as any;
+                routeStatsCache.value = result.stats;
+
+                const cache = result.stats;
+                const lastIdx = (result.displayPath.length - 1) * 2;
+                const totalKm = cache[lastIdx];
+                const totalHours = cache[lastIdx + 1];
+
+                drawRouteOnMap(result.displayPath);
+                drawDestinationMarkers();
+
+                routeDistance.value = Math.round(totalKm);
+                const h = Math.floor(totalHours);
+                const m = Math.round((totalHours - h) * 60);
+                routeEta.value = `${h}h ${m}min`;
+
+                const lastStop =
+                    waypointList.value[waypointList.value.length - 1]!;
+                destinationName.value = getGameLocationName(
+                    lastStop[0],
+                    lastStop[1],
+                );
+
+                fullRouteDirections.value = generateDirectionsList(
+                    result.nodeSequence,
+                    result.nodeKms,
+                    result.sequenceManeuvers,
+                    result.sequenceExits,
+                    nodeCoords,
+                );
+
+                if (fullRouteDirections.value.length > 1) {
+                    const upcomingTurn = fullRouteDirections.value[1];
+                    if (
+                        upcomingTurn &&
+                        upcomingTurn.cumulativeKm !== undefined
+                    ) {
+                        nextTurnDistance.value = Math.max(
+                            0,
+                            +upcomingTurn.cumulativeKm.toFixed(1),
+                        );
+                    }
+                } else {
+                    nextTurnDistance.value = 0;
+                }
+
+                if (activeSettings.value.hasTurnNavigation) {
+                    drawTurnArrows(
+                        fullRouteDirections.value,
+                        result.displayPath,
+                    );
+                }
+
+                routeFound.value = true;
+                currentRouteIndex.value = 0;
+                updateProfile(
+                    "lastDestination",
+                    waypointList.value[waypointList.value.length - 1]!,
+                );
+            } else {
+                routeFound.value = false;
+            }
+        } catch (e) {
+            console.error(`Route calculation failed: ${e}`);
+            isRouteActive.value = false;
+        } finally {
+            isCalculating.value = false;
+        }
+    }
+
+    function calculateMultiRouteInWorker(
+        startId: number,
+        waypointsCoords: [number, number][],
+        waypointsNodeGroups: number[][],
+        heading: number,
+        startType: string,
+        ownedDlcs: number[],
+        sdkScale: number,
+        avgSpeed: number,
+    ): Promise<any> {
+        return new Promise((resolve) => {
+            if (!worker) {
+                resolve(null);
+                return;
+            }
+
+            const handler = (e: MessageEvent) => {
+                if (e.data.type === "RESULT") {
+                    worker!.removeEventListener("message", handler);
+                    resolve(e.data.payload);
+                }
+            };
+
+            worker.addEventListener("message", handler);
+
+            const cleanCoords = waypointsCoords.map((coord) => [
+                Number(coord[0]),
+                Number(coord[1]),
+            ]);
+            const cleanNodeGroups = waypointsNodeGroups.map((group) =>
+                group.map((node) => Number(node)),
+            );
+            const cleanDlcs = ownedDlcs.map((dlc) => Number(dlc));
+
+            worker.postMessage({
+                type: "CALC_MULTI_ROUTE",
+                payload: {
+                    startId: Number(startId),
+                    waypointsCoords: cleanCoords,
+                    waypointsNodeGroups: cleanNodeGroups,
+                    heading: heading !== null ? Number(heading) : null,
+                    startType,
+                    ownedDlcs: cleanDlcs,
+                    selectedGame: settings.value.selectedGame,
+                    sdkScale: Number(sdkScale),
+                    avgSpeed: Number(avgSpeed),
+                },
+            });
+        });
+    }
+
+    async function handleRouteClick(
+        clickCoords: [number, number],
+        truckCoords: [number, number],
+        truckHeading: number,
+        sdkScale: number,
+        createEndMarker: boolean,
+        avgSpeed: number,
+    ) {
+        waypointList.value = [clickCoords];
+        await handleMultiRouteCalculation(
+            truckCoords,
+            truckHeading,
+            sdkScale,
+            avgSpeed,
+        );
+    }
+
+    async function removeWaypointAtIndex(
+        index: number,
+        truckCoords: [number, number],
+        truckHeading: number,
+        sdkScale: number,
+        avgSpeed: number,
+    ) {
+        waypointList.value.splice(index, 1);
+
+        if (waypointList.value.length === 0) {
+            clearRouteState();
+        } else {
+            drawDestinationMarkers();
+
+            await handleMultiRouteCalculation(
+                truckCoords,
+                truckHeading,
+                sdkScale,
+                avgSpeed,
+            );
+        }
+    }
+
+    function drawDestinationMarkers() {
+        if (!map.value) return;
+
+        const source = map.value.getSource(
+            "destination-source",
+        ) as maplibregl.GeoJSONSource;
+        if (!source) return;
+
+        const features = waypointList.value.map((coords, idx) => {
+            let markerCoords = coords;
+
+            const targetNodeId = snappedWaypointNodeIds.value[idx];
+            if (targetNodeId !== undefined) {
+                const snappedCoords = nodeCoords.get(targetNodeId);
+                if (snappedCoords) {
+                    markerCoords = snappedCoords;
+                }
+            }
+
+            return {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: markerCoords,
+                },
+                properties: {
+                    index: idx,
+                },
+            };
+        });
+
+        source.setData({
+            type: "FeatureCollection",
+            features: features as any,
+        });
     }
 
     function projectPointToSegment(
@@ -265,7 +530,6 @@ export const useRouteController = (
                     arrowCoords.push(finalHeadPoint);
                 }
 
-                // 5. Generate MapLibre features
                 if (arrowCoords.length >= 2) {
                     linesFeatures.push({
                         type: "Feature",
@@ -286,7 +550,6 @@ export const useRouteController = (
                         properties: { bearing },
                     });
 
-                    // --- NEW: Register that we successfully drew an arrow ---
                     arrowsDrawn++;
                 }
             }
@@ -309,50 +572,6 @@ export const useRouteController = (
                 type: "FeatureCollection",
                 features: headsFeatures as any,
             });
-    }
-
-    function calculateRouteInWorker(
-        startId: number,
-        possibleEnds: number[],
-        heading: number,
-        startType: string,
-        targetCoords: [number, number],
-        projectedStartCoords: [number, number],
-        ownedDlcs: number[],
-        sdkScale: number,
-        avgSpeed: number,
-    ): Promise<any> {
-        return new Promise((resolve) => {
-            if (!worker) {
-                resolve(null);
-                return;
-            }
-
-            const handler = (e: MessageEvent) => {
-                if (e.data.type === "RESULT") {
-                    worker!.removeEventListener("message", handler);
-                    resolve(e.data.payload);
-                }
-            };
-
-            worker.addEventListener("message", handler);
-
-            worker.postMessage({
-                type: "CALC_ROUTE",
-                payload: {
-                    startId,
-                    possibleEnds,
-                    heading,
-                    startType,
-                    targetCoords,
-                    projectedStartCoords,
-                    ownedDlcs,
-                    selectedGame: settings.value.selectedGame,
-                    sdkScale,
-                    avgSpeed,
-                },
-            });
-        });
     }
 
     function findBestStartConfiguration(
@@ -454,55 +673,11 @@ export const useRouteController = (
         return null;
     }
 
-    async function findFlexibleRoute(
-        startNodeId: number,
-        targetCoords: [number, number],
-        truckHeading: number,
-        startType: "road" | "yard",
-        projectedStartCoords: [number, number],
-        sdkScale: number,
-        avgSpeed: number,
-    ) {
-        const SEARCH_RADII = [1, 2, 4, 8, 16, 32, 100, 300];
-        const userDlcs = toRaw(activeSettings.value.ownedDlcs);
-
-        for (const radius of SEARCH_RADII) {
-            const candidates = getClosestNodes(targetCoords, radius, 0.1);
-
-            if (candidates.length === 0) continue;
-
-            const result = await calculateRouteInWorker(
-                startNodeId,
-                candidates,
-                truckHeading,
-                startType,
-                targetCoords,
-                projectedStartCoords,
-                userDlcs,
-                sdkScale,
-                avgSpeed,
-            );
-
-            if (result) {
-                return result;
-            }
-        }
-
-        return null;
-    }
-
     function drawRouteOnMap(coords: [number, number][]) {
         if (!map.value) return;
 
         const rawMap = toRaw(map.value);
         setMapLibreData(rawMap, "route-line", "LineString", toRaw(coords));
-    }
-
-    function addDestinationMarker(nodeId: number) {
-        const endLocation = nodeCoords.get(nodeId);
-        if (!endLocation || !map.value) return;
-
-        setMapLibreData(map.value, "destination-source", "Point", endLocation);
     }
 
     async function setupRouteLayer() {
@@ -565,8 +740,37 @@ export const useRouteController = (
                 },
             });
 
-            map.value.on("click", "destination-layer", () => {
-                clearRouteState();
+            map.value.on("click", "destination-layer", async (e) => {
+                const { truckCoords, truckHeading, averageSpeed, scale } =
+                    useEtsTelemetry();
+                if (!truckCoords.value) return;
+
+                const features = map.value!.queryRenderedFeatures(e.point, {
+                    layers: ["destination-layer"],
+                });
+
+                if (features.length > 0) {
+                    const index = features[0]!.properties?.index;
+
+                    if (index !== undefined) {
+                        const targetIdx = parseInt(index, 10);
+
+                        const currentScale =
+                            scale.value > 0
+                                ? scale.value
+                                : settings.value.selectedGame === "ats"
+                                ? 20
+                                : 19;
+
+                        await removeWaypointAtIndex(
+                            targetIdx,
+                            truckCoords.value,
+                            truckHeading.value,
+                            currentScale,
+                            averageSpeed.value,
+                        );
+                    }
+                }
             });
             map.value.on("mouseenter", "destination-layer", () => {
                 map.value!.getCanvas().style.cursor = "pointer";
@@ -664,111 +868,59 @@ export const useRouteController = (
         }
     }
 
-    async function handleRouteClick(
-        clickCoords: [number, number],
-        truckCoords: [number, number],
-        truckHeading: number,
+    function calculateRouteInWorker(
+        startId: number,
+        possibleEnds: number[],
+        heading: number,
+        startType: string,
+        targetCoords: [number, number],
+        projectedStartCoords: [number, number],
+        ownedDlcs: number[],
         sdkScale: number,
-        createEndMarker: boolean,
         avgSpeed: number,
-    ) {
-        if (adjacency.size === 0 || isCalculating.value || !isWorkerReady)
-            return;
-
-        isCalculating.value = true;
-        routeFound.value = null;
-
-        savedDestination.value = clickCoords;
-
-        try {
-            const startConfig = findBestStartConfiguration(
-                truckCoords,
-                truckHeading,
-                50,
-            );
-
-            if (!startConfig) return;
-            isYardStart.value = startConfig.type === "yard";
-
-            startNodeId.value = startConfig.toId;
-            const result = await findFlexibleRoute(
-                startNodeId.value!,
-                toRaw(clickCoords),
-                truckHeading,
-                startConfig.type as "road" | "yard",
-                startConfig.projectedCoords,
-                sdkScale,
-                avgSpeed,
-            );
-
-            if (result) {
-                isRouteActive.value = true;
-
-                endNodeId.value = result.endId;
-
-                const frozenRawPath = Object.freeze(result.displayPath);
-                currentRoutePath.value = frozenRawPath as any;
-
-                routeStatsCache.value = result.stats;
-
-                const cache = result.stats;
-                const lastIdx = (result.rawPath.length - 1) * 2;
-                const totalKm = cache[lastIdx]!;
-                const totalHours = cache[lastIdx + 1]!;
-
-                drawRouteOnMap(result.displayPath);
-                if (createEndMarker) addDestinationMarker(result.endId);
-
-                routeDistance.value = Math.round(totalKm);
-                const h = Math.floor(totalHours);
-                const m = Math.round((totalHours - h) * 60);
-                routeEta.value = `${h}h ${m}min`;
-
-                destinationName.value = getGameLocationName(
-                    clickCoords[0],
-                    clickCoords[1],
-                );
-
-                fullRouteDirections.value = generateDirectionsList(
-                    result.nodeSequence,
-                    result.nodeKms,
-                    result.sequenceManeuvers,
-                    result.sequenceExits,
-                    nodeCoords,
-                );
-
-                if (fullRouteDirections.value.length > 1) {
-                    const upcomingTurn = fullRouteDirections.value[1];
-                    if (
-                        upcomingTurn &&
-                        upcomingTurn.cumulativeKm !== undefined
-                    ) {
-                        const distKm = +upcomingTurn.cumulativeKm.toFixed(1);
-                        nextTurnDistance.value = Math.max(0, distKm);
-                    }
-                } else {
-                    nextTurnDistance.value = 0;
-                }
-
-                if (activeSettings.value.hasTurnNavigation) {
-                    drawTurnArrows(
-                        fullRouteDirections.value,
-                        result.displayPath,
-                    );
-                }
-
-                routeFound.value = true;
-                currentRouteIndex.value = 0;
-                updateProfile("lastDestination", savedDestination.value);
-            } else {
-                routeFound.value = false;
+    ): Promise<any> {
+        return new Promise((resolve) => {
+            if (!worker) {
+                resolve(null);
+                return;
             }
-        } catch (e) {
-            console.log(`Route calculation Failed: ${e}`);
-            isRouteActive.value = false;
-        } finally {
-            isCalculating.value = false;
-        }
+
+            const handler = (e: MessageEvent) => {
+                if (e.data.type === "RESULT") {
+                    worker!.removeEventListener("message", handler);
+                    resolve(e.data.payload);
+                }
+            };
+
+            worker.addEventListener("message", handler);
+
+            const cleanEnds = possibleEnds.map((node) => Number(node));
+            const cleanTarget = [
+                Number(targetCoords[0]),
+                Number(targetCoords[1]),
+            ] as [number, number];
+            const cleanProjected = [
+                Number(projectedStartCoords[0]),
+                Number(projectedStartCoords[1]),
+            ] as [number, number];
+            const cleanDlcs = ownedDlcs.map((dlc) => Number(dlc));
+
+            worker.postMessage({
+                type: "CALC_ROUTE",
+                payload: {
+                    startId: Number(startId),
+                    possibleEnds: cleanEnds,
+                    heading: heading !== null ? Number(heading) : null,
+                    startType,
+                    targetCoords: cleanTarget,
+                    projectedStartCoords: cleanProjected,
+                    ownedDlcs: cleanDlcs,
+                    selectedGame: settings.value.selectedGame,
+                    sdkScale: Number(sdkScale),
+                    avgSpeed: Number(avgSpeed),
+                },
+            });
+        });
     }
 
     const lastRecalcTime = ref(0);
@@ -844,13 +996,11 @@ export const useRouteController = (
             const upcomingTurn = fullRouteDirections.value[1];
 
             if (upcomingTurn && upcomingTurn.cumulativeKm !== undefined) {
-                // 1. Keep visual distance calculating to the START of the turn (Arrow Tail)
                 const distKm = upcomingTurn.cumulativeKm - currentKm;
                 const distRounded = +distKm.toFixed(1);
 
                 nextTurnDistance.value = Math.max(0, distRounded);
 
-                // 2. Base the removal threshold on the END of the turn (Arrow Head)
                 const targetExitKm =
                     upcomingTurn.exitCumulativeKm !== undefined
                         ? upcomingTurn.exitCumulativeKm
@@ -860,7 +1010,6 @@ export const useRouteController = (
                 const threshold =
                     upcomingTurn.type === "destination" ? 0.02 : 0.05;
 
-                // Shift the array ONLY when we pass the Head of the arrow
                 if (distToExit < threshold) {
                     fullRouteDirections.value.shift();
 
@@ -893,15 +1042,13 @@ export const useRouteController = (
         }
 
         if (minSqDist > activeThreshold) {
-            if (!isCalculating.value && savedDestination.value) {
+            if (!isCalculating.value && waypointList.value.length > 0) {
                 lastRecalcTime.value = now;
                 console.log("Deviation detected! Recalculating...");
-                handleRouteClick(
-                    toRaw(savedDestination.value),
+                handleMultiRouteCalculation(
                     truckCoords,
                     truckHeading,
                     sdkScale,
-                    false,
                     avgSpeed,
                 );
                 return;
@@ -920,7 +1067,9 @@ export const useRouteController = (
         isRouteActive.value = false;
         endNodeId.value = null;
         currentRoutePath.value = null;
-        savedDestination.value = null;
+
+        waypointList.value = [];
+        snappedWaypointNodeIds.value = [];
         isYardStart.value = false;
         fullRouteDirections.value = [];
         updateProfile("lastDestination", null);
@@ -944,7 +1093,10 @@ export const useRouteController = (
         nextTurnDistance,
         initWorkerData,
         destroyWorker,
+        waypointList,
+        removeWaypointAtIndex,
         setupRouteLayer,
+        handleMultiRouteCalculation,
         handleRouteClick,
         findBestStartConfiguration,
         updateRouteProgress,

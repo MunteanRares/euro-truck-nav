@@ -1,3 +1,18 @@
+let adjacency: Map<number, any[]> | null = null;
+let nodeCoordsF64: Float64Array | null = null;
+let nodeCoordsMapInstance: TypedNodeCoordsMap | null = null;
+
+import {
+    buildRouteStatsCache,
+    calculateRoute,
+    type WorkerCityArea,
+    simplifyPath,
+    smoothPath,
+} from "~/assets/utils/routing/algorithm";
+
+let cityNodes: WorkerCityArea[] | null = null;
+let geometryF32: Float32Array | null = null;
+
 class TypedNodeCoordsMap {
     private array: Float64Array;
     public size: number;
@@ -83,21 +98,6 @@ class TypedNodeCoordsMap {
         return this.entries();
     }
 }
-
-let adjacency: Map<number, any[]> | null = null;
-let nodeCoordsF64: Float64Array | null = null;
-let nodeCoordsMapInstance: TypedNodeCoordsMap | null = null;
-
-import {
-    buildRouteStatsCache,
-    calculateRoute,
-    type WorkerCityArea,
-    simplifyPath,
-    smoothPath,
-} from "~/assets/utils/routing/algorithm";
-
-let cityNodes: WorkerCityArea[] | null = null;
-let geometryF32: Float32Array | null = null;
 
 self.onmessage = async (e: MessageEvent) => {
     const { type, payload } = e.data;
@@ -339,6 +339,198 @@ self.onmessage = async (e: MessageEvent) => {
             }
         } catch (error) {
             console.error("Web Worker calculation crash caught:", error);
+            self.postMessage({ type: "RESULT", payload: null });
+        }
+    }
+
+    if (type === "CALC_MULTI_ROUTE") {
+        try {
+            if (!adjacency || !nodeCoordsMapInstance || !geometryF32) {
+                self.postMessage({ type: "RESULT", payload: null });
+                return;
+            }
+
+            const {
+                startId,
+                waypointsCoords,
+                waypointsNodeGroups,
+                heading,
+                startType,
+                ownedDlcs,
+                selectedGame,
+                sdkScale,
+                avgSpeed,
+            } = payload;
+
+            let currentStartId = startId;
+            let currentHeading = heading;
+            let currentStartType = startType;
+
+            const combinedNodeSequence: number[] = [];
+            const combinedPathCoords: [number, number][] = [];
+            const snappedNodeIds: number[] = [];
+
+            // Loop through each segment sequentially
+            for (let i = 0; i < waypointsNodeGroups.length; i++) {
+                const targetCoords = waypointsCoords[i];
+                const candidateEnds = new Set<number>(waypointsNodeGroups[i]);
+
+                // Calculate current segment route
+                const segmentResult = calculateRoute(
+                    currentStartId,
+                    candidateEnds,
+                    currentHeading,
+                    adjacency,
+                    nodeCoordsMapInstance as any,
+                    currentStartType,
+                    ownedDlcs,
+                    targetCoords,
+                );
+
+                if (!segmentResult) {
+                    self.postMessage({ type: "RESULT", payload: null });
+                    return;
+                }
+
+                // Extract display coordinates for this segments geometry
+                const segmentDisplayPath: [number, number][] = [];
+                for (
+                    let j = 0;
+                    j < segmentResult.nodeSequence.length - 1;
+                    j++
+                ) {
+                    const u = segmentResult.nodeSequence[j]!;
+                    const v = segmentResult.nodeSequence[j + 1]!;
+                    const edge = adjacency.get(u)?.find((e) => e.to === v);
+
+                    if (edge && edge.startIndex !== undefined) {
+                        for (let p = 0; p < edge.pointCount; p++) {
+                            const lng = geometryF32[edge.startIndex + p * 2]!;
+                            const lat =
+                                geometryF32[edge.startIndex + p * 2 + 1]!;
+
+                            if (
+                                segmentDisplayPath.length > 0 &&
+                                segmentDisplayPath[
+                                    segmentDisplayPath.length - 1
+                                ]![0] === lng &&
+                                segmentDisplayPath[
+                                    segmentDisplayPath.length - 1
+                                ]![1] === lat
+                            ) {
+                                continue;
+                            }
+                            segmentDisplayPath.push([lng, lat]);
+                        }
+                    } else {
+                        segmentDisplayPath.push(segmentResult.path[j]!);
+                    }
+                }
+
+                let arrivalHeading = 0;
+                if (segmentResult.nodeSequence.length >= 2) {
+                    const u =
+                        segmentResult.nodeSequence[
+                            segmentResult.nodeSequence.length - 2
+                        ]!;
+                    const v =
+                        segmentResult.nodeSequence[
+                            segmentResult.nodeSequence.length - 1
+                        ]!;
+
+                    const edge = adjacency.get(u)?.find((e) => e.to === v);
+                    arrivalHeading = edge ? edge.hOut || 0 : 0;
+                }
+
+                if (combinedNodeSequence.length > 0) {
+                    combinedNodeSequence.pop();
+                }
+
+                combinedNodeSequence.push(...segmentResult.nodeSequence);
+                combinedPathCoords.push(...segmentDisplayPath);
+                snappedNodeIds.push(segmentResult.endId);
+
+                currentStartId = segmentResult.endId;
+                currentHeading = arrivalHeading;
+                currentStartType = "road";
+            }
+
+            const simplified = simplifyPath(combinedPathCoords, 0.00003);
+            const finalSmoothedPath = smoothPath(simplified, 4);
+
+            const finalStatsCache = buildRouteStatsCache(
+                finalSmoothedPath,
+                cityNodes,
+                selectedGame,
+                sdkScale,
+                avgSpeed,
+            );
+
+            const nodeKms = new Float32Array(combinedNodeSequence.length);
+            for (let i = 0; i < combinedNodeSequence.length; i++) {
+                const originalNodePos = nodeCoordsMapInstance.get(
+                    combinedNodeSequence[i]!,
+                );
+                if (!originalNodePos) continue;
+
+                let MinDistSq = Infinity;
+                let bestIdx = 0;
+                for (let j = 0; j < finalSmoothedPath.length; j++) {
+                    const p = finalSmoothedPath[j]!;
+                    const dSq =
+                        Math.pow(p[0] - originalNodePos[0], 2) +
+                        Math.pow(p[1] - originalNodePos[1], 2);
+
+                    if (dSq < MinDistSq) {
+                        MinDistSq = dSq;
+                        bestIdx = j;
+                    }
+                }
+                nodeKms[i] = finalStatsCache[bestIdx * 2]!;
+            }
+
+            const sequenceManeuvers = new Int8Array(
+                combinedNodeSequence.length,
+            );
+            const sequenceExits = new Int8Array(combinedNodeSequence.length);
+            for (let i = 0; i < combinedNodeSequence.length - 1; i++) {
+                const u = combinedNodeSequence[i]!;
+                const v = combinedNodeSequence[i + 1]!;
+                const edge = adjacency.get(u)?.find((e) => e.to === v);
+
+                let mType = edge ? edge.maneuverType || 0 : 0;
+                let extNum = edge ? edge.exitNumber || 0 : 0;
+
+                if (mType === 3 && extNum === -3) extNum = 1;
+                sequenceManeuvers[i] = mType;
+                sequenceExits[i] = extNum;
+            }
+
+            self.postMessage(
+                {
+                    type: "RESULT",
+                    payload: {
+                        nodeSequence: combinedNodeSequence,
+                        displayPath: finalSmoothedPath,
+                        stats: finalStatsCache,
+                        nodeKms,
+                        sequenceManeuvers,
+                        sequenceExits,
+                        snappedNodeIds,
+                        endId: combinedNodeSequence[
+                            combinedNodeSequence.length - 1
+                        ],
+                    },
+                },
+                [
+                    finalStatsCache.buffer,
+                    nodeKms.buffer,
+                    sequenceManeuvers.buffer,
+                    sequenceExits.buffer,
+                ],
+            );
+        } catch (error) {
+            console.error("Multi-routing worker error:", error);
             self.postMessage({ type: "RESULT", payload: null });
         }
     }
