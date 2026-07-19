@@ -3,7 +3,6 @@ import { ref, onMounted, shallowRef, Transition } from "vue";
 import "maplibre-gl/dist/maplibre-gl.css";
 import maplibregl from "maplibre-gl";
 import { usePlatform } from "~/composables/Platform";
-import eruda from "eruda";
 import {
     blendWithBg,
     darkenColor,
