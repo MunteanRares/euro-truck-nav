@@ -2,6 +2,7 @@ import type { GameType } from "~/types";
 
 export type UnitSystem = "metric" | "imperial";
 export type TextTheme = "light" | "dark";
+export type RouteTimeMode = "game" | "real";
 export type UiComponent =
     | "speed"
     | "fuel"
@@ -39,6 +40,7 @@ export interface AppSettingsState {
     compactTripFontSize: number;
     activeUiComponents: ActiveComponents;
     locale: LocaleCode;
+    routeTimeMode: RouteTimeMode;
 }
 
 const DEFAULT_PROFILE: GameProfile = {
@@ -85,6 +87,7 @@ const DEFAULT_SETTINGS: AppSettingsState = {
         "topBar",
     ],
     locale: "en",
+    routeTimeMode: "game",
 };
 
 const STORAGE_KEY = "truck-nav-settings";
@@ -223,6 +226,7 @@ export const useSettings = () => {
         settings.value.truckMarkerSize = DEFAULT_SETTINGS.truckMarkerSize;
         settings.value.compactTripFontSize =
             DEFAULT_SETTINGS.compactTripFontSize;
+        settings.value.routeTimeMode = DEFAULT_SETTINGS.routeTimeMode;
 
         settings.value.activeUiComponents = [
             ...DEFAULT_SETTINGS.activeUiComponents,

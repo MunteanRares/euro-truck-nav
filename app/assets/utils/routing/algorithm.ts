@@ -426,7 +426,7 @@ export function buildRouteStatsCache(
     sdkScale: number = 0,
     avgSpeed: number,
 ) {
-    const cache = new Float32Array(pathCoords.length * 2);
+    const cache = new Float32Array(pathCoords.length * 3);
     const isAts = selectedGame === "ats";
 
     const baseHighway = isAts ? 105 : 82;
@@ -443,10 +443,12 @@ export function buildRouteStatsCache(
     );
 
     let totalKm = 0;
-    let totalHours = 0;
+    let totalGameHours = 0;
+    let totalRealHours = 0;
 
     cache[0] = 0; // km
-    cache[1] = 0; // hours
+    cache[1] = 0; // game hours
+    cache[2] = 0; // real hours
 
     for (let i = 0; i < pathCoords.length - 1; i++) {
         const [x1, z1] = gamePoints[i]!;
@@ -465,13 +467,16 @@ export function buildRouteStatsCache(
 
         const segmentKm = (rawLength * multiplier) / 1000;
         const segmentSpeed = multiplier === 3 ? speeds.city : speeds.highway;
+        const segmentGameHours = segmentKm / segmentSpeed;
 
         totalKm += segmentKm;
-        totalHours += segmentKm / segmentSpeed;
+        totalGameHours += segmentGameHours;
+        totalRealHours += segmentGameHours / multiplier;
 
-        const idx = (i + 1) * 2;
+        const idx = (i + 1) * 3;
         cache[idx] = totalKm;
-        cache[idx + 1] = totalHours;
+        cache[idx + 1] = totalGameHours;
+        cache[idx + 2] = totalRealHours;
     }
 
     return cache;

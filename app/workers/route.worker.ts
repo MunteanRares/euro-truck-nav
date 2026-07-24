@@ -249,7 +249,7 @@ self.onmessage = async (e: MessageEvent) => {
                             bestIdx = j;
                         }
                     }
-                    nodeKms[i] = finalStatsCache[bestIdx * 2]!;
+                    nodeKms[i] = finalStatsCache[bestIdx * 3]!;
                 }
 
                 const sequenceManeuvers = new Int8Array(
@@ -486,7 +486,7 @@ self.onmessage = async (e: MessageEvent) => {
                         bestIdx = j;
                     }
                 }
-                nodeKms[i] = finalStatsCache[bestIdx * 2]!;
+                nodeKms[i] = finalStatsCache[bestIdx * 3]!;
             }
 
             const sequenceManeuvers = new Int8Array(

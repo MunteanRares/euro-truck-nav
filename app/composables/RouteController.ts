@@ -17,6 +17,9 @@ import {
 
 import RouteWorker from "~/workers/route.worker?worker&inline";
 
+const REAL_TIME_DELAY_FACTOR = 0.25;
+const MAX_REAL_TIME_DELAY_MINUTES = 10;
+
 export const useRouteController = (
     map: Ref<maplibregl.Map | null>,
     adjacency: Map<number, any>,
@@ -55,6 +58,43 @@ export const useRouteController = (
 
     const waypointList = ref<[number, number][]>([]);
     const snappedWaypointNodeIds = ref<number[]>([]);
+
+    function updateRouteEta(gameHours: number, realHours: number) {
+        const usesRealTime = settings.value.routeTimeMode === "real";
+        const realTimeDelay = Math.min(
+            realHours * REAL_TIME_DELAY_FACTOR,
+            MAX_REAL_TIME_DELAY_MINUTES / 60,
+        );
+        const remainingHours = usesRealTime
+            ? realHours + realTimeDelay
+            : gameHours;
+
+        if (remainingHours > 0) {
+            const totalMinutes = Math.round(remainingHours * 60);
+            const h = Math.floor(totalMinutes / 60);
+            const m = totalMinutes % 60;
+            routeEta.value = `${usesRealTime ? "~ " : ""}${h}h ${m}min`;
+        } else {
+            routeEta.value = "Arriving...";
+        }
+    }
+
+    watch(
+        () => settings.value.routeTimeMode,
+        () => {
+            const cache = routeStatsCache.value;
+            const path = currentRoutePath.value;
+            if (!cache || !path) return;
+
+            const lastIdx = (path.length - 1) * 3;
+            const currentIdx = currentRouteIndex.value * 3;
+
+            updateRouteEta(
+                cache[lastIdx + 1]! - cache[currentIdx + 1]!,
+                cache[lastIdx + 2]! - cache[currentIdx + 2]!,
+            );
+        },
+    );
 
     watch(
         () => activeSettings.value.themeColor,
@@ -227,17 +267,16 @@ export const useRouteController = (
                 routeStatsCache.value = result.stats;
 
                 const cache = result.stats;
-                const lastIdx = (result.displayPath.length - 1) * 2;
+                const lastIdx = (result.displayPath.length - 1) * 3;
                 const totalKm = cache[lastIdx];
-                const totalHours = cache[lastIdx + 1];
+                const totalGameHours = cache[lastIdx + 1];
+                const totalRealHours = cache[lastIdx + 2];
 
                 drawRouteOnMap(result.displayPath);
                 drawDestinationMarkers();
 
                 routeDistance.value = Math.round(totalKm);
-                const h = Math.floor(totalHours);
-                const m = Math.round((totalHours - h) * 60);
-                routeEta.value = `${h}h ${m}min`;
+                updateRouteEta(totalGameHours, totalRealHours);
 
                 const lastStop =
                     waypointList.value[waypointList.value.length - 1]!;
@@ -971,26 +1010,23 @@ export const useRouteController = (
             return;
         }
 
-        const lastIdx = (path.length - 1) * 2;
-        const currentIdx = bestIndex * 2;
+        const lastIdx = (path.length - 1) * 3;
+        const currentIdx = bestIndex * 3;
 
         const totalKm = cache[lastIdx]!;
-        const totalHours = cache[lastIdx + 1]!;
+        const totalGameHours = cache[lastIdx + 1]!;
+        const totalRealHours = cache[lastIdx + 2]!;
 
         const currentKm = cache[currentIdx]!;
-        const currentHours = cache[currentIdx + 1]!;
+        const currentGameHours = cache[currentIdx + 1]!;
+        const currentRealHours = cache[currentIdx + 2]!;
 
         const remKm = totalKm - currentKm;
-        const remHours = totalHours - currentHours;
+        const remGameHours = totalGameHours - currentGameHours;
+        const remRealHours = totalRealHours - currentRealHours;
         routeDistance.value = Math.round(remKm);
 
-        if (remHours > 0) {
-            const h = Math.floor(remHours);
-            const m = Math.round((remHours - h) * 60);
-            routeEta.value = `${h}h ${m}min`;
-        } else {
-            routeEta.value = "Arriving...";
-        }
+        updateRouteEta(remGameHours, remRealHours);
 
         if (fullRouteDirections.value.length > 1) {
             const upcomingTurn = fullRouteDirections.value[1];
