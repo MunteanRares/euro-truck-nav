@@ -14,6 +14,12 @@ export interface DiscordRpcPayload {
 const DISCORD_CLIENT_ID = "1401296138186788865";
 const ROTATE_INTERVAL_MS = 10_000;
 const RPC_SHUTDOWN_WAIT_MS = 1_500;
+const RPC_BUTTONS = [
+    {
+        label: "Get it on GitHub",
+        url: "https://github.com/Rares-Muntean/TruckNav-Sim",
+    },
+];
 
 let rpcLib: any = null;
 let rpcClient: any = null;
@@ -139,7 +145,7 @@ export async function destroyDiscordRpc(useIdleFlush = true) {
     } catch {}
 
     try {
-        rpcClient.destroy();
+        await rpcClient.destroy();
     } catch {}
 
     rpcClient = null;
@@ -183,17 +189,16 @@ async function waitForDiscordRpcFlush(delayMs: number) {
 async function setIdlePresence() {
     if (!rpcClient || !rpcReady) return;
 
-    await rpcClient.setActivity({
+    const presence = {
         details: "TruckNav",
         state: "Waiting for telemetry",
         largeImageText: "TruckNav",
+        buttons: RPC_BUTTONS,
         instance: false,
-    });
+    };
 
-    lastPayloadKey = JSON.stringify({
-        details: "TruckNav",
-        state: "Waiting for telemetry",
-    });
+    await rpcClient.setActivity(presence);
+    lastPayloadKey = JSON.stringify(presence);
 }
 
 async function pushCurrentPresence() {
@@ -250,15 +255,10 @@ function buildPresence(payload: DiscordRpcPayload) {
         details,
         state,
         largeImageText: "TruckNav",
-        buttons: [
-            {
-                label: "Get it on GitHub",
-                url: "https://github.com/Rares-Muntean/TruckNav-Sim",
-            },
-        ],
+        buttons: RPC_BUTTONS,
         startTimestamp:
             payload.connected && sessionStartedAt > 0
-                ? Math.floor(sessionStartedAt / 1000)
+                ? sessionStartedAt
                 : undefined,
         instance: false,
     };
