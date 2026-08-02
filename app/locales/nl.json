@@ -108,7 +108,8 @@
         "german": "Duits",
         "slovak": "Slowaaks",
         "romanian": "Roemeens",
-        "korean": "Koreaans"
+        "korean": "Koreaans",
+        "chinese": "Chinees"
     },
     "uiComponents": {
         "fuelDescription": "Toont je resterende brandstofniveau en pulseert wanneer het laag is.",

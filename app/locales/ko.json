@@ -108,7 +108,8 @@
         "german": "독일어",
         "slovak": "슬로바키아어",
         "romanian": "루마니아어",
-        "korean": "한국어"
+        "korean": "한국어",
+        "chinese": "중국어"
     },
     "uiComponents": {
         "fuelDescription": "남은 연료량을 표시하며, 연료가 부족하면 깜빡입니다.",

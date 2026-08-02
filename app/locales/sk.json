@@ -108,7 +108,8 @@
         "german": "Nemčina",
         "slovak": "Slovenčina",
         "romanian": "Rumunčina",
-        "korean": "Kórejčina"
+        "korean": "Kórejčina",
+        "chinese": "Čínština"
     },
     "uiComponents": {
         "fuelDescription": "Ukáže zostávajúce palivo a pulzuje, keď dochádza.",

@@ -108,7 +108,8 @@
         "german": "German",
         "slovak": "Slovak",
         "romanian": "Romanian",
-        "korean": "Korean"
+        "korean": "Korean",
+        "chinese": "Chinese"
     },
     "uiComponents": {
         "fuelDescription": "Shows your remaining fuel level and it pulses when running low.",
